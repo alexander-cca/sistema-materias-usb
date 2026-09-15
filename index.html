@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sistema de Registro de Materias USB</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+:root{--azul:#003399;--azul2:#001f66;--amarillo:#ffcc00;--fondo:#f4f6fb;--texto:#1f2937;--muted:#6b7280;--borde:#dbe2ee}
+*{box-sizing:border-box}
+body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:var(--fondo);color:var(--texto)}
+button,input,select,textarea{font:inherit} button{cursor:pointer}
+.hidden{display:none!important}
+.topbar{background:linear-gradient(135deg,var(--azul),var(--azul2));color:#fff;border-bottom:5px solid var(--amarillo)}
+.topbar .inner{max-width:1180px;margin:auto;padding:16px;display:flex;align-items:center;gap:14px}
+.logo{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;border:3px solid var(--amarillo);background:#fff;color:var(--azul);font-weight:800}
+.brand{font-weight:800;font-size:20px} .brand small{display:block;color:#ffe777;font-size:12px;margin-top:5px}
+.container{max-width:1180px;margin:auto;padding:18px}
+.card{background:#fff;border:1px solid var(--borde);border-radius:16px;box-shadow:0 6px 20px rgba(0,0,0,.06)}
+.login{max-width:470px;margin:28px auto;padding:24px}
+label{display:block;font-size:13px;color:var(--muted);font-weight:700;margin:12px 0 6px}
+input,select,textarea{width:100%;min-height:44px;padding:10px 12px;border:1px solid #cfd7e5;border-radius:10px;background:#fff}
+.btn{border:0;border-radius:10px;min-height:44px;padding:10px 15px;font-weight:700}
+.primary{background:var(--azul);color:#fff} .secondary{background:#eef2f7;color:#223} .danger{background:#fee2e2;color:#991b1b} .success{background:#dcfce7;color:#166534}
+.app{display:grid;grid-template-columns:240px minmax(0,1fr);gap:18px}
+.sidebar{padding:14px;align-self:start;position:sticky;top:12px}
+.user-chip{padding:12px;border-bottom:1px solid var(--borde);margin-bottom:12px}
+.user-chip strong{display:block} .user-chip span{font-size:12px;color:var(--muted);word-break:break-all}
+.navbtn{width:100%;text-align:left;border:0;background:transparent;border-radius:9px;padding:11px 10px;margin:3px 0;font-weight:700;color:#334155}
+.navbtn.active,.navbtn:hover{background:#eaf0ff;color:var(--azul)}
+.content{min-width:0} .section{padding:18px}
+.toolbar{display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+.stat{padding:16px} .stat b{font-size:27px;color:var(--azul);display:block} .stat span{font-size:12px;color:var(--muted)}
+.table-wrap{overflow:auto;border:1px solid var(--borde);border-radius:12px}
+table{border-collapse:collapse;width:100%;min-width:780px;background:#fff} th,td{padding:11px;border-bottom:1px solid #edf0f5;text-align:left;font-size:13px;vertical-align:top}
+th{background:#f7f9fc;color:#526070;font-size:12px;text-transform:uppercase}
+.badge{display:inline-block;padding:4px 8px;border-radius:999px;font-size:11px;font-weight:800;background:#e8efff;color:#163d8d}
+.badge.admin{background:#ffe8e8;color:#9b1c1c}
+.subject-row{display:grid;grid-template-columns:34px 105px 1fr;align-items:center;gap:8px;padding:11px;border-bottom:1px solid #eef2f6}
+.subject-row input{width:20px;min-height:20px} .subject-code{font-size:12px;font-weight:800;color:var(--azul)}
+.subject-picker{border:1px solid var(--borde);border-radius:12px;overflow:hidden;margin-top:12px}
+.picker-head{padding:12px;background:#f7f9fc;border-bottom:1px solid var(--borde);display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.actions{display:flex;gap:7px;flex-wrap:wrap} .actions button{border:0;border-radius:8px;padding:7px 9px;font-size:12px;font-weight:700}
+.msg{margin-top:10px;padding:10px;border-radius:9px;background:#eef6ff;color:#174a8b;font-size:13px}
+.audit-item{padding:11px 0;border-bottom:1px solid #edf0f5} .audit-item p{margin:5px 0 0;color:var(--muted);font-size:12px}
+@media(max-width:800px){.container{padding:12px}.app{grid-template-columns:1fr}.sidebar{position:static}.stats{grid-template-columns:1fr}.grid2{grid-template-columns:1fr}.subject-row{grid-template-columns:30px 88px 1fr;padding:10px 8px}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="inner"><div class="logo">USB</div><div class="brand">Sistema de Registro de Materias<small>Universidad Salesiana de Bolivia · Ingeniería de Sistemas</small></div></div></header>
+<main class="container">
+<section id="loginView" class="card login">
+<h2>Ingreso al sistema</h2>
+<p style="color:var(--muted);font-size:14px">Ingresa con el correo y contraseña creados por el administrador.</p>
+<form id="loginForm">
+<label>Correo</label><input id="email" type="email" required placeholder="usuario@usb.bo">
+<label>Contraseña</label><input id="password" type="password" required>
+<button class="btn primary" style="width:100%;margin-top:16px">Ingresar</button>
+</form>
+<div id="loginMsg"></div>
+</section>
+
+<section id="appView" class="hidden">
+<div class="app">
+<aside class="card sidebar">
+<div class="user-chip"><strong id="who"></strong><span id="whoEmail"></span><br><span id="whoRole" class="badge"></span></div>
+<button class="navbtn active" data-tab="inicio">🏠 Inicio</button>
+<button class="navbtn" data-tab="materias">📚 Mis materias</button>
+<button class="navbtn admin-only" data-tab="usuarios">👥 Usuarios</button>
+<button class="navbtn admin-only" data-tab="auditoria">🧾 Auditoría</button>
+<button class="navbtn" id="logout">↩ Cerrar sesión</button>
+</aside>
+
+<div class="content">
+<section id="tab-inicio" class="tab">
+<div class="stats"><div class="card stat"><b id="sMaterias">0</b><span>Materias</span></div><div class="card stat"><b id="sUsuarios">0</b><span>Usuarios</span></div><div class="card stat"><b id="sCambios">0</b><span>Cambios</span></div></div>
+<div class="card section"><h2>Panel principal</h2><p id="welcome" style="color:var(--muted)"></p></div>
+</section>
+
+<section id="tab-materias" class="tab hidden">
+<div class="card section">
+<div class="toolbar"><div><h2 style="margin-bottom:4px">Mis materias</h2><span style="font-size:13px;color:var(--muted)">Selecciona semestre y materias del pensum.</span></div><button class="btn primary" id="addBtn">+ Registrar materias</button></div>
+<form id="subjectForm" class="hidden" style="border:1px solid var(--borde);padding:14px;border-radius:12px;margin-bottom:15px">
+<div class="grid2"><div><label>Gestión académica</label><select id="term"><option>1/2026</option><option selected>2/2026</option><option>1/2027</option><option>2/2027</option></select></div>
+<div><label>Semestre de carrera</label><select id="semester"></select></div></div>
+<div class="subject-picker"><div class="picker-head"><strong>Materias del semestre</strong><button type="button" class="btn secondary" id="allBtn">Seleccionar todas</button></div><div id="pensumList"></div></div>
+<div class="actions" style="margin-top:12px"><button class="btn primary">Registrar seleccionadas</button><button type="button" class="btn secondary" id="cancelBtn">Cancelar</button></div>
+</form>
+<div id="subjectsArea"></div>
+</div>
+</section>
+
+<section id="tab-usuarios" class="tab hidden"><div class="card section"><h2>Usuarios del curso</h2><div class="table-wrap"><table><thead><tr><th>Nombre</th><th>Correo</th><th>Rol</th><th>Materias</th></tr></thead><tbody id="usersBody"></tbody></table></div></div></section>
+<section id="tab-auditoria" class="tab hidden"><div class="card section"><h2>Historial de cambios</h2><div id="auditArea"></div></div></section>
+</div>
+</div>
+</section>
+</main>
+
+<script>
+const sb = supabase.createClient('https://knunvffaamsdrwcggeip.supabase.co','sb_publishable_2ViUuaRJP78DhjUE7NzZNw_5dbr46Wi');
+let session=null, profile=null, pensum=[], subjects=[];
+const $=id=>document.getElementById(id);
+const esc=v=>{const d=document.createElement('div');d.textContent=v??'';return d.innerHTML};
+for(let i=1;i<=10;i++){const o=document.createElement('option');o.value=i;o.textContent=i+'° semestre';$('semester').appendChild(o)} $('semester').value='6';
+
+function showMsg(msg){$('loginMsg').innerHTML='<div class="msg">'+esc(msg)+'</div>'}
+$('loginForm').addEventListener('submit',async e=>{
+ e.preventDefault();
+ const {data,error}=await sb.auth.signInWithPassword({email:$('email').value.trim(),password:$('password').value});
+ if(error) return showMsg('No se pudo iniciar sesión: '+error.message);
+ session=data.session; await loadProfile();
+});
+
+async function loadProfile(){
+ const u=(await sb.auth.getUser()).data.user;
+ if(!u) return;
+ const {data,error}=await sb.from('usb_profiles').select('*').eq('user_id',u.id).single();
+ if(error||!data){await sb.auth.signOut();return showMsg('Tu correo no está autorizado en este sistema.');}
+ profile=data; $('loginView').classList.add('hidden');$('appView').classList.remove('hidden');
+ $('who').textContent=profile.full_name;$('whoEmail').textContent=profile.email;$('whoRole').textContent=profile.role;$('whoRole').className='badge '+(profile.role==='ADMIN'?'admin':'');
+ document.querySelectorAll('.admin-only').forEach(x=>x.classList.toggle('hidden',profile.role!=='ADMIN'));
+ $('welcome').textContent=profile.role==='ADMIN'?'Puedes ver usuarios, materias e historial de cambios.':'Puedes registrar y administrar tus propias materias.';
+ await refreshAll();switchTab('inicio');
+}
+
+$('logout').onclick=async()=>{await sb.auth.signOut();location.reload()};
+document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>switchTab(b.dataset.tab));
+function switchTab(t){document.querySelectorAll('.tab').forEach(x=>x.classList.add('hidden'));$('tab-'+t).classList.remove('hidden');document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x.dataset.tab===t));}
+
+async function refreshAll(){
+ const p=await sb.from('usb_pensum').select('*').order('semester').order('code');pensum=p.data||[];
+ const q=await sb.from('usb_student_subjects').select('id,user_id,pensum_id,academic_term,status,teacher,note,usb_pensum(code,name,semester)').order('created_at',{ascending:false});subjects=q.data||[];
+ $('sMaterias').textContent=subjects.length;
+ if(profile.role==='ADMIN'){
+   const pr=await sb.from('usb_profiles').select('*').order('full_name'); const users=pr.data||[]; $('sUsuarios').textContent=users.length; renderUsers(users);
+   const au=await sb.from('usb_audit').select('*').order('created_at',{ascending:false}).limit(100); const audits=au.data||[];$('sCambios').textContent=audits.length;renderAudit(audits);
+ } else {$('sUsuarios').textContent='-';$('sCambios').textContent='-';}
+ renderSubjects();renderPensum();
+}
+
+function renderPensum(){
+ const sem=Number($('semester').value); const rows=pensum.filter(x=>x.semester===sem);
+ $('pensumList').innerHTML=rows.map(x=>`<label class="subject-row"><input type="checkbox" class="chk" value="${x.id}"><span class="subject-code">${esc(x.code)}</span><span>${esc(x.name)}</span></label>`).join('');
+}
+$('semester').onchange=renderPensum;
+$('allBtn').onclick=()=>{const c=[...document.querySelectorAll('.chk')];const all=c.length&&c.every(x=>x.checked);c.forEach(x=>x.checked=!all);};
+$('addBtn').onclick=()=>{$('subjectForm').classList.remove('hidden');renderPensum()};
+$('cancelBtn').onclick=()=>$('subjectForm').classList.add('hidden');
+
+$('subjectForm').addEventListener('submit',async e=>{
+ e.preventDefault(); const selected=[...document.querySelectorAll('.chk:checked')].map(x=>Number(x.value));
+ if(!selected.length)return alert('Selecciona al menos una materia.');
+ const rows=selected.map(id=>({user_id:profile.user_id,pensum_id:id,academic_term:$('term').value,status:'Cursando'}));
+ const {error}=await sb.from('usb_student_subjects').upsert(rows,{onConflict:'user_id,pensum_id,academic_term',ignoreDuplicates:true});
+ if(error)return alert(error.message); $('subjectForm').classList.add('hidden');await refreshAll();
+});
+
+function renderSubjects(){
+ const list=profile.role==='ADMIN'?subjects:subjects.filter(x=>x.user_id===profile.user_id);
+ if(!list.length){$('subjectsArea').innerHTML='<p style="color:var(--muted)">Todavía no hay materias registradas.</p>';return}
+ $('subjectsArea').innerHTML='<div class="table-wrap"><table><thead><tr><th>Gestión</th><th>Sem.</th><th>Código</th><th>Materia</th><th>Estado</th><th>Docente</th><th>Acciones</th></tr></thead><tbody>'+
+ list.map(s=>`<tr><td>${esc(s.academic_term)}</td><td>${s.usb_pensum?.semester||''}°</td><td><b>${esc(s.usb_pensum?.code||'')}</b></td><td>${esc(s.usb_pensum?.name||'')}</td><td><span class="badge">${esc(s.status)}</span></td><td>${esc(s.teacher||'-')}</td><td>${s.user_id===profile.user_id?`<div class="actions"><button class="success" onclick="editSubject(${s.id})">Editar</button><button class="danger" onclick="deleteSubject(${s.id})">Eliminar</button></div>`:'-'}</td></tr>`).join('')+
+ '</tbody></table></div>';
+}
+window.editSubject=async id=>{const s=subjects.find(x=>x.id===id&&x.user_id===profile.user_id);if(!s)return;const status=prompt('Estado: Cursando / Aprobada / Pendiente',s.status);if(status===null)return;const teacher=prompt('Docente',s.teacher||'');if(teacher===null)return;const note=prompt('Observación',s.note||'');if(note===null)return;const {error}=await sb.from('usb_student_subjects').update({status,teacher,note}).eq('id',id);if(error)alert(error.message);else refreshAll()};
+window.deleteSubject=async id=>{if(!confirm('¿Eliminar esta materia?'))return;const {error}=await sb.from('usb_student_subjects').delete().eq('id',id);if(error)alert(error.message);else refreshAll()};
+
+function renderUsers(users){
+ $('usersBody').innerHTML=users.map(u=>`<tr><td><b>${esc(u.full_name)}</b></td><td>${esc(u.email)}</td><td><span class="badge ${u.role==='ADMIN'?'admin':''}">${esc(u.role)}</span></td><td>${subjects.filter(s=>s.user_id===u.user_id).length}</td></tr>`).join('');
+}
+function renderAudit(audits){
+ $('auditArea').innerHTML=audits.length?audits.map(a=>`<div class="audit-item"><b>${esc(a.actor_email||'sistema')} · ${esc(a.action)}</b><p>${new Date(a.created_at).toLocaleString('es-BO')} · Registro ${esc(a.record_id||'')}</p></div>`).join(''):'<p style="color:var(--muted)">Sin movimientos.</p>';
+}
+(async()=>{const {data}=await sb.auth.getSession();if(data.session){session=data.session;await loadProfile()}})();
+</script>
+</body>
+</html>
