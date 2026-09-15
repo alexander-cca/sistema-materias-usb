@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Perfil de Mascotas</title>
+<style>
+body{margin:0;background:#f1f5f9;font-family:Arial,sans-serif;color:#1e293b}
+main{max-width:1000px;margin:auto;padding:20px}.card{background:white;border-radius:14px;padding:20px;box-shadow:0 6px 20px rgba(0,0,0,.06);margin-bottom:18px}
+h1{color:#3730a3}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}input,select,textarea,button{padding:11px;border-radius:9px;border:1px solid #cbd5e1;font-size:16px}textarea{grid-column:1/-1}button{background:#4f46e5;color:white;border:0;font-weight:700;cursor:pointer}.pets{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}article{background:white;border-radius:12px;padding:15px;box-shadow:0 4px 14px rgba(0,0,0,.05)}@media(max-width:700px){.grid,.pets{grid-template-columns:1fr}}
+</style></head>
+<body>
+<nav style="background:#3730a3;color:white;padding:14px 18px;font-family:Arial,sans-serif">
+  <div style="max-width:1000px;margin:auto;display:flex;gap:18px;flex-wrap:wrap">
+    <a href="registro.html" style="color:white;text-decoration:none;font-weight:700">Registro</a>
+    <a href="calculadora.html" style="color:white;text-decoration:none;font-weight:700">Calculadora</a>
+    <a href="mascotas.html" style="color:white;text-decoration:none;font-weight:700">Mascotas</a>
+  </div>
+</nav>
+
+<main>
+<div class="card"><h1>Perfil de Mascotas</h1><p>Registro básico de mascotas para adopción.</p>
+<form id="mf" class="grid"><input id="mn" required placeholder="Nombre"><select id="me"><option>Perro</option><option>Gato</option><option>Otro</option></select><input id="med" type="number" min="0" required placeholder="Edad"><input id="mr" required placeholder="Raza"><textarea id="md" required placeholder="Descripción"></textarea><button style="grid-column:1/-1">Registrar mascota</button></form></div>
+<div id="mg" class="pets"></div>
+</main>
+<script>
+let ms=JSON.parse(localStorage.getItem('mascotasUSB_demo')||'[]');
+function rr(){mg.innerHTML=ms.length?ms.map((q,i)=>`<article><h3>${q.n}</h3><p>${q.e} - ${q.r} - ${q.ed} año(s)</p><p>${q.d}</p><button style="background:#dc2626" onclick="del(${i})">Eliminar</button></article>`).join(''):'<p>No hay mascotas registradas.</p>'}
+mf.addEventListener('submit',e=>{e.preventDefault();ms.push({n:mn.value,e:me.value,ed:med.value,r:mr.value,d:md.value});localStorage.setItem('mascotasUSB_demo',JSON.stringify(ms));mf.reset();rr()});
+function del(i){ms.splice(i,1);localStorage.setItem('mascotasUSB_demo',JSON.stringify(ms));rr()}rr();
+</script></body></html>

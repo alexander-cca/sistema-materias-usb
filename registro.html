@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registro de Estudiantes</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+body{margin:0;background:#f1f5f9;font-family:Arial,sans-serif;color:#1e293b}
+main{max-width:1000px;margin:auto;padding:20px}
+.card{background:white;border-radius:14px;padding:20px;box-shadow:0 6px 20px rgba(0,0,0,.06);margin-bottom:18px}
+h1{color:#3730a3}
+.grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px}
+input,button{padding:11px;border-radius:9px;border:1px solid #cbd5e1;font-size:16px}
+button{background:#4f46e5;color:white;border:0;font-weight:700;cursor:pointer}
+table{width:100%;border-collapse:collapse;margin-top:12px}
+th,td{padding:10px;border-bottom:1px solid #e2e8f0;text-align:left}
+.actions button{padding:7px 9px;font-size:13px;margin-right:5px}
+@media(max-width:700px){.grid{grid-template-columns:1fr} .tablewrap{overflow:auto}}
+</style>
+</head>
+<body>
+
+<nav style="background:#3730a3;color:white;padding:14px 18px;font-family:Arial,sans-serif">
+  <div style="max-width:1000px;margin:auto;display:flex;gap:18px;flex-wrap:wrap">
+    <a href="registro.html" style="color:white;text-decoration:none;font-weight:700">Registro</a>
+    <a href="calculadora.html" style="color:white;text-decoration:none;font-weight:700">Calculadora</a>
+    <a href="mascotas.html" style="color:white;text-decoration:none;font-weight:700">Mascotas</a>
+  </div>
+</nav>
+
+<main>
+<div class="card">
+<h1>Registro de Estudiantes</h1>
+<p>Base de datos común en línea con Supabase.</p>
+<form id="f" class="grid">
+<input id="n" required placeholder="Nombre">
+<input id="m" required placeholder="Materia">
+<input id="x" type="number" min="0" max="100" required placeholder="Nota">
+<button type="submit" style="grid-column:1/-1">Guardar</button>
+</form>
+</div>
+<div class="card">
+<div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap"><h2>Estudiantes registrados</h2><span id="st">Conectando...</span></div>
+<div class="tablewrap">
+<table>
+<thead><tr><th>ID</th><th>Nombre</th><th>Materia</th><th>Nota</th><th>Acciones</th></tr></thead>
+<tbody id="tb"></tbody>
+</table>
+</div>
+</div>
+</main>
+<script>
+const s=supabase.createClient('https://knunvffaamsdrwcggeip.supabase.co','sb_publishable_2ViUuaRJP78DhjUE7NzZNw_5dbr46Wi');
+const esc=t=>{const d=document.createElement('div');d.textContent=t??'';return d.innerHTML};
+async function cargar(){
+ const {data,error}=await s.from('estudiantes').select('*').order('id',{ascending:false});
+ st.textContent=error?'Error':'Supabase conectado';
+ tb.innerHTML=error?'<tr><td colspan="5">'+esc(error.message)+'</td></tr>':
+ (data?.length?data.map(r=>`<tr><td>${r.id}</td><td>${esc(r.nombre)}</td><td>${esc(r.materia)}</td><td>${r.nota}</td><td class="actions"><button onclick="editar(${r.id})">Editar</button><button style="background:#dc2626" onclick="borrar(${r.id})">Eliminar</button></td></tr>`).join(''):'<tr><td colspan="5">Sin registros</td></tr>');
+}
+f.addEventListener('submit',async e=>{e.preventDefault();const {error}=await s.from('estudiantes').insert({nombre:n.value.trim(),materia:m.value.trim(),nota:+x.value});if(error)alert(error.message);else{f.reset();cargar()}});
+async function borrar(id){if(confirm('¿Eliminar registro?')){const {error}=await s.from('estudiantes').delete().eq('id',id);if(error)alert(error.message);else cargar()}}
+async function editar(id){const {data,error}=await s.from('estudiantes').select('*').eq('id',id).single();if(error)return alert(error.message);const nn=prompt('Nombre',data.nombre),mm=prompt('Materia',data.materia),xx=prompt('Nota',data.nota);if(nn===null||mm===null||xx===null)return;const r=await s.from('estudiantes').update({nombre:nn.trim(),materia:mm.trim(),nota:+xx}).eq('id',id);if(r.error)alert(r.error.message);else cargar()}
+cargar();
+</script>
+</body>
+</html>
