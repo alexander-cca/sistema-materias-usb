@@ -182,7 +182,8 @@ async function refreshAll(){
  const q=await sb.from('usb_student_subjects').select('id,user_id,pensum_id,offering_id,academic_term,status,teacher,note,parallel,shift,usb_pensum(code,name,semester,area,prerequisite_code)').order('created_at',{ascending:false});subjects=q.data||[];
  $('sMaterias').textContent=profile.role==='ADMIN'?subjects.length:subjects.filter(x=>x.user_id===profile.user_id).length;
  const mine=subjects.filter(x=>x.user_id===profile.user_id);$('sSemestre').textContent=mine.length?Math.max(...mine.map(x=>x.usb_pensum?.semester||0))+'°':'-';
- if(profile.role==='ADMIN'){const pr=await sb.from('usb_profiles').select('*').order('full_name');profiles=pr.data||[];$('sUsuarios').textContent=profiles.length;renderUsers();const au=await sb.from('usb_audit').select('*').order('created_at',{ascending:false}).limit(150);audits=au.data||[];$('sCambios').textContent=audits.length;renderAudit()}else{$('sUsuarios').textContent='-';$('sCambios').textContent='-'}
+ const pr=await sb.from('usb_profiles').select('*').order('full_name');profiles=pr.data||[];$('sUsuarios').textContent=profiles.length;
+ if(profile.role==='ADMIN'){renderUsers();const au=await sb.from('usb_audit').select('*').order('created_at',{ascending:false}).limit(150);audits=au.data||[];$('sCambios').textContent=audits.length;renderAudit()}else{$('sCambios').textContent='-'}
  const fr=await sb.from('usb_friendships').select('*').order('created_at',{ascending:false});friendships=fr.data||[];
  const po=await sb.from('usb_posts').select('*').order('created_at',{ascending:false}).limit(100);posts=po.data||[];
  const co=await sb.from('usb_post_comments').select('*').order('created_at');comments=co.data||[];
