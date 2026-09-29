@@ -106,6 +106,36 @@ html{scroll-behavior:smooth} body{min-height:100vh;background:linear-gradient(18
 .profile-modal-backdrop{position:fixed;inset:0;background:rgba(10,20,35,.56);z-index:110;backdrop-filter:blur(3px)}.profile-modal{position:fixed;z-index:111;left:50%;top:50%;transform:translate(-50%,-50%);width:min(92vw,680px);max-height:88vh;overflow:auto;background:#fff;border-radius:22px;box-shadow:0 30px 80px rgba(0,0,0,.28)}.profile-modal-close{position:absolute;right:14px;top:14px;z-index:2}.modal-cover{height:210px;background:linear-gradient(135deg,#cfe2ff,#edf4ff);background-size:cover;background-position:center}.modal-profile-head{display:flex;align-items:flex-end;gap:14px;padding:0 22px 16px;margin-top:-50px}.modal-avatar{width:104px;height:104px;border:5px solid #fff;border-radius:50%;overflow:hidden;background:#eaf3ff;display:grid;place-items:center;color:#1d4ed8;font-size:25px;font-weight:900;box-shadow:0 4px 14px rgba(0,0,0,.13)}.modal-avatar img{width:100%;height:100%;object-fit:cover}.modal-body{padding:0 22px 22px}.modal-bio{padding:14px;border-radius:14px;background:#f6f8fb;color:#4b5563;line-height:1.5;margin:6px 0 14px}.clickable-name{cursor:pointer}.clickable-name:hover{text-decoration:underline;color:#0f5fd5}
 @media(max-width:600px){.profile-modal{width:calc(100vw - 16px);max-height:92vh;border-radius:18px}.modal-cover{height:155px}.modal-profile-head{padding:0 14px 13px;margin-top:-38px}.modal-avatar{width:82px;height:82px}.modal-body{padding:0 14px 18px}}
 
+
+/* ===== PESTAÑAS PRODUCIDAS USB SOCIAL v4 ===== */
+.page-shell{display:grid;gap:16px}
+.page-head{position:relative;overflow:hidden;border-radius:22px;padding:24px 26px;background:linear-gradient(135deg,#ffffff 0%,#f7faff 62%,#eef5ff 100%);border:1px solid #dbe5f1;box-shadow:0 8px 24px rgba(15,23,42,.06)}
+.page-head:after{content:"";position:absolute;width:190px;height:190px;border-radius:50%;right:-72px;top:-105px;background:linear-gradient(135deg,rgba(24,119,242,.15),rgba(96,165,250,.05))}
+.page-head-row{position:relative;z-index:2;display:flex;justify-content:space-between;gap:18px;align-items:center}
+.page-title-wrap{display:flex;align-items:center;gap:14px;min-width:0}
+.page-icon{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;font-size:25px;background:linear-gradient(135deg,#1877f2,#0f5fc7);color:#fff;box-shadow:0 10px 22px rgba(24,119,242,.22);flex:0 0 54px}
+.page-title{margin:0;font-size:25px;line-height:1.05;letter-spacing:-.035em}.page-sub{margin-top:6px;color:var(--muted);font-size:13px;line-height:1.45}
+.page-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}.page-actions input{min-width:260px;background:#fff}
+.page-kpis{position:relative;z-index:2;display:flex;gap:9px;flex-wrap:wrap;margin-top:17px}
+.metric-chip{min-width:124px;padding:10px 13px;border:1px solid #dde7f3;border-radius:14px;background:rgba(255,255,255,.86);backdrop-filter:blur(8px)}
+.metric-chip b{display:block;font-size:20px;letter-spacing:-.03em;color:#0f4fa8}.metric-chip span{font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:#7a8598;font-weight:850}
+.content-panel{padding:22px}.panel-title{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:16px}.panel-title h3{margin:0;font-size:17px;letter-spacing:-.02em}.panel-title p{margin:3px 0 0;color:var(--muted);font-size:12px}
+.two-panel{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.35fr);gap:16px}.soft-panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 4px 16px rgba(15,23,42,.045)}
+.filters-pro{display:grid;grid-template-columns:170px 170px minmax(220px,1fr);gap:10px;background:#fff;border:1px solid var(--line);padding:14px;border-radius:16px;box-shadow:0 4px 15px rgba(15,23,42,.04)}.filter-field label{font-size:10px;text-transform:uppercase;letter-spacing:.08em;margin:0 0 5px;color:#8490a3}.filter-field input,.filter-field select{background:#f7f9fc;border-color:#e3e8ef}
+#plannerArea{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:13px}.subject-card{margin:0;position:relative;overflow:hidden}.subject-card:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(#1877f2,#60a5fa)}.subject-title{font-size:14px}.offerings{grid-template-columns:1fr}.offer{transition:.18s}.offer:has(input:checked){background:#eaf4ff;border-color:#82b7f7;box-shadow:inset 0 0 0 1px #9cc7fb}
+.subjects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:13px}.subject-tile{position:relative;overflow:hidden;background:#fff;border:1px solid var(--line);border-radius:18px;padding:17px;box-shadow:0 4px 15px rgba(15,23,42,.04);transition:.18s}.subject-tile:hover{transform:translateY(-2px);box-shadow:var(--shadow2)}.subject-code{display:inline-flex;padding:5px 8px;border-radius:8px;background:#eaf3ff;color:#0f5fc7;font-size:11px;font-weight:900}.subject-name-big{font-weight:900;font-size:16px;line-height:1.25;margin:10px 0 8px}.subject-facts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}.fact-box{padding:9px;border-radius:12px;background:#f7f9fc;border:1px solid #edf0f5}.fact-box small{display:block;color:#8a94a6;font-size:9px;text-transform:uppercase;font-weight:850;letter-spacing:.06em}.fact-box b{display:block;font-size:12px;margin-top:3px}.subject-actions{display:flex;gap:7px;margin-top:11px}.subject-actions button{flex:1}
+.schedule-overview{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}.week-grid{gap:12px;padding:3px 2px 10px}.day-col{background:#fff;border-color:#e0e6ee;border-radius:16px;box-shadow:0 4px 14px rgba(15,23,42,.035)}.day-head{background:linear-gradient(180deg,#f7fbff,#eef5ff);padding:12px;color:#0f5fc7;letter-spacing:.04em}.day-body{min-height:245px}.class-block{border-radius:12px;border-left-width:4px;padding:11px;box-shadow:0 3px 9px rgba(15,23,42,.04)}.class-time{display:inline-flex;padding:4px 7px;background:#eaf3ff;border-radius:7px;margin-bottom:7px}.schedule-card{border:1px solid var(--line);border-left:4px solid #1877f2;border-radius:14px;padding:14px;box-shadow:0 3px 12px rgba(15,23,42,.035)}
+.malla-grid{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}.semester-box{border-radius:18px;background:#fff;border-color:var(--line);box-shadow:0 4px 14px rgba(15,23,42,.04);transition:.18s}.semester-box:hover{transform:translateY(-2px);box-shadow:var(--shadow2)}.semester-box h3{display:flex;align-items:center;justify-content:space-between;padding:14px 15px;background:linear-gradient(180deg,#f8fbff,#eff5ff);color:#0f5fc7;font-size:15px}.semester-count{font-size:10px;padding:4px 7px;border-radius:999px;background:#fff;color:#6b7280;border:1px solid #dfe7f2}.semester-box ul{list-style:none;padding:8px 14px 14px}.semester-box li{padding:10px 0;margin:0;border-bottom:1px solid #eef1f5}.semester-box li:last-child{border-bottom:0}.semester-code{display:inline-block;font-size:10px;font-weight:900;color:#0f5fc7;margin-right:5px}
+.security-layout{display:grid;grid-template-columns:minmax(260px,.75fr) minmax(0,1.25fr);gap:16px}.security-visual{padding:24px;background:linear-gradient(145deg,#0e4f9e,#1877f2);color:#fff;border-radius:20px;min-height:330px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 16px 34px rgba(24,119,242,.2)}.security-icon{width:62px;height:62px;border-radius:18px;background:rgba(255,255,255,.15);display:grid;place-items:center;font-size:30px}.security-visual h2{margin:16px 0 8px}.security-visual p{opacity:.88;line-height:1.5}.security-tip{font-size:12px;padding:11px;border-radius:12px;background:rgba(255,255,255,.12)}.security-form{padding:24px}.security-form form{max-width:540px}
+.admin-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}.admin-mini{padding:14px;border-radius:15px;background:#fff;border:1px solid var(--line)}.admin-mini b{display:block;font-size:22px;color:#0f4fa8}.admin-mini span{font-size:11px;color:var(--muted);font-weight:750}
+.table-wrap{background:#fff;border-color:#e1e6ed}.table-wrap table{min-width:760px}th{padding:12px 13px;background:#f5f8fc;color:#6f7b8f;letter-spacing:.06em}td{padding:12px 13px}.user-cell{display:flex;align-items:center;gap:9px}.mini-avatar{width:36px;height:36px;border-radius:50%;overflow:hidden;background:#eaf3ff;display:grid;place-items:center;color:#0f5fc7;font-weight:900;flex:0 0 36px}.mini-avatar img{width:100%;height:100%;object-fit:cover}
+.timeline{border-left:0;padding-left:0;display:grid;gap:10px}.audit-item{position:relative;border:1px solid var(--line);border-radius:15px;padding:13px 14px 13px 48px;background:#fff}.audit-item:before{content:"✓";position:absolute;left:14px;top:14px;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:#e9f7ef;color:#15803d;font-size:11px;font-weight:900}.audit-item p{margin-top:5px}
+.notification-panel{overflow:hidden}.notification-panel .notif{margin:0 12px;border-bottom:1px solid #edf0f5}.notification-panel .notif:last-child{border-bottom:0}
+.people-grid .person{border-top:3px solid transparent}.people-grid .person:hover{border-top-color:#1877f2}.friends-grid .person{background:#f9fbfd;border:1px solid var(--line);border-radius:14px;margin-bottom:8px}
+@media(max-width:1180px){.two-panel{grid-template-columns:1fr}.security-layout{grid-template-columns:1fr}.security-visual{min-height:230px}.filters-pro{grid-template-columns:1fr 1fr}.filters-pro .wide{grid-column:1/-1}.admin-summary{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:760px){.page-head{padding:18px}.page-head-row{display:block}.page-actions{margin-top:14px;justify-content:flex-start}.page-actions input{min-width:0;width:100%}.page-title{font-size:21px}.page-icon{width:46px;height:46px;flex-basis:46px}.page-kpis{display:grid;grid-template-columns:1fr 1fr}.metric-chip{min-width:0}.filters-pro{grid-template-columns:1fr}.filters-pro .wide{grid-column:auto}#plannerArea{grid-template-columns:1fr}.subjects-grid{grid-template-columns:1fr}.malla-grid{grid-template-columns:1fr}.admin-summary{grid-template-columns:1fr 1fr}.security-form{padding:17px}.security-visual{padding:20px}.two-panel{display:block}.two-panel>.soft-panel+ .soft-panel{margin-top:12px}}
+@media(max-width:430px){.page-head{padding:15px;border-radius:16px}.page-title-wrap{align-items:flex-start}.page-icon{width:42px;height:42px;flex-basis:42px;border-radius:13px;font-size:20px}.page-title{font-size:19px}.page-kpis{gap:7px}.metric-chip{padding:9px 10px}.metric-chip b{font-size:17px}.content-panel{padding:15px}.admin-summary{grid-template-columns:1fr}.subject-facts{grid-template-columns:1fr 1fr}.subject-actions{flex-direction:column}.subject-actions button{width:100%}}
+
 </style>
 </head>
 <body>
@@ -199,52 +229,150 @@ html{scroll-behavior:smooth} body{min-height:100vh;background:linear-gradient(18
 </div>
 </section>
 
-<section id="tab-personas" class="tab hidden"><div class="card section"><div class="toolbar"><h2>Personas</h2><input id="peopleSearch" style="max-width:320px" placeholder="Buscar por nombre o correo..."></div><div id="peopleArea" class="people-grid"></div></div></section>
+<section id="tab-personas" class="tab hidden">
+<div class="page-shell">
+  <div class="page-head">
+    <div class="page-head-row">
+      <div class="page-title-wrap"><div class="page-icon">👥</div><div><h1 class="page-title">Personas</h1><div class="page-sub">Descubre compañeros de Ingeniería de Sistemas y conecta con tu comunidad universitaria.</div></div></div>
+      <div class="page-actions"><input id="peopleSearch" placeholder="Buscar por nombre, carrera o correo..."></div>
+    </div>
+    <div class="page-kpis"><div class="metric-chip"><b id="peopleTotal">0</b><span>Personas</span></div><div class="metric-chip"><b id="peopleFriends">0</b><span>Mis amigos</span></div><div class="metric-chip"><b id="peoplePending">0</b><span>Solicitudes</span></div></div>
+  </div>
+  <div class="card content-panel"><div class="panel-title"><div><h3>Comunidad USB</h3><p>Pulsa una persona para ver su perfil y datos académicos.</p></div></div><div id="peopleArea" class="people-grid"></div></div>
+</div>
+</section>
 
-<section id="tab-amigos" class="tab hidden"><div class="card section"><h2>Amigos y solicitudes</h2><div class="grid2"><div><h3>Solicitudes recibidas</h3><div id="requestsArea"></div></div><div><h3>Mis amigos</h3><div id="friendsArea"></div></div></div></div></section>
+<section id="tab-amigos" class="tab hidden">
+<div class="page-shell">
+  <div class="page-head">
+    <div class="page-head-row"><div class="page-title-wrap"><div class="page-icon">🤝</div><div><h1 class="page-title">Amigos</h1><div class="page-sub">Administra tus conexiones y responde solicitudes dentro de USB Social.</div></div></div><div class="page-actions"><button class="btn primary" onclick="switchTab('personas')">+ Buscar personas</button></div></div>
+    <div class="page-kpis"><div class="metric-chip"><b id="friendsTotal">0</b><span>Amigos</span></div><div class="metric-chip"><b id="requestsTotal">0</b><span>Pendientes</span></div></div>
+  </div>
+  <div class="two-panel">
+    <div class="soft-panel"><div class="panel-title"><div><h3>Solicitudes recibidas</h3><p>Personas que quieren conectar contigo.</p></div></div><div id="requestsArea" class="friends-grid"></div></div>
+    <div class="soft-panel"><div class="panel-title"><div><h3>Mis amigos</h3><p>Tu red de compañeros dentro de la carrera.</p></div></div><div id="friendsArea" class="friends-grid"></div></div>
+  </div>
+</div>
+</section>
 
 <section id="tab-perfil-social" class="tab hidden">
-<div class="card profile-shell">
-  <div id="profileCover" class="profile-cover"></div>
-  <div class="profile-header">
-    <div id="profileAvatar" class="avatar"></div>
-    <div class="profile-info"><h2 id="profileName" style="margin:0"></h2><div id="profileMeta" class="post-meta"></div></div>
+<div class="page-shell">
+  <div class="page-head">
+    <div class="page-head-row"><div class="page-title-wrap"><div class="page-icon">🙋</div><div><h1 class="page-title">Mi perfil</h1><div class="page-sub">Personaliza cómo te ven tus compañeros dentro de USB Social.</div></div></div></div>
+    <div class="page-kpis"><div class="metric-chip"><b id="profileFriendsCount">0</b><span>Amigos</span></div><div class="metric-chip"><b id="profilePostCount">0</b><span>Publicaciones</span></div><div class="metric-chip"><b id="profileSubjectCount">0</b><span>Materias</span></div></div>
   </div>
-  <div class="profile-editor">
-    <div class="full"><label>Biografía</label><textarea id="profileBio" placeholder="Cuéntale algo a tus compañeros..."></textarea></div>
-    <div><label>Carrera</label><input id="profileCareer"></div>
-    <div><label>Semestre</label><select id="profileSemester"><option value="">Sin definir</option><option value="1">1° semestre</option><option value="2">2° semestre</option><option value="3">3° semestre</option><option value="4">4° semestre</option><option value="5">5° semestre</option><option value="6">6° semestre</option><option value="7">7° semestre</option><option value="8">8° semestre</option><option value="9">9° semestre</option><option value="10">10° semestre</option></select></div>
-    <div class="upload-tile"><label style="margin-top:0">Foto de perfil</label><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><label class="btn secondary" style="display:inline-flex;margin:0">📷 Elegir foto<input id="profileAvatarFile" type="file" accept="image/*" style="display:none"></label><span id="avatarUploadStatus" class="post-meta"></span></div><input id="profileAvatarUrl" type="hidden"></div>
-    <div class="upload-tile"><label style="margin-top:0">Portada</label><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><label class="btn secondary" style="display:inline-flex;margin:0">🖼️ Elegir portada<input id="profileCoverFile" type="file" accept="image/*" style="display:none"></label><span id="coverUploadStatus" class="post-meta"></span></div><input id="profileCoverUrl" type="hidden"></div>
-    <div class="full"><button class="btn primary" id="saveSocialProfile">Guardar cambios del perfil</button></div>
+  <div class="card profile-shell">
+    <div id="profileCover" class="profile-cover"></div>
+    <div class="profile-header"><div id="profileAvatar" class="avatar"></div><div class="profile-info"><h2 id="profileName" style="margin:0"></h2><div id="profileMeta" class="post-meta"></div></div></div>
+    <div class="profile-editor">
+      <div class="full"><label>Biografía</label><textarea id="profileBio" placeholder="Cuéntale algo a tus compañeros..."></textarea></div>
+      <div><label>Carrera</label><input id="profileCareer"></div>
+      <div><label>Semestre</label><select id="profileSemester"><option value="">Sin definir</option><option value="1">1° semestre</option><option value="2">2° semestre</option><option value="3">3° semestre</option><option value="4">4° semestre</option><option value="5">5° semestre</option><option value="6">6° semestre</option><option value="7">7° semestre</option><option value="8">8° semestre</option><option value="9">9° semestre</option><option value="10">10° semestre</option></select></div>
+      <div class="upload-tile"><label style="margin-top:0">Foto de perfil</label><p class="post-meta">JPG, PNG, WEBP o GIF · máximo 5 MB.</p><label class="btn secondary" style="display:inline-flex;margin:5px 0 0">📷 Elegir foto<input id="profileAvatarFile" type="file" accept="image/*" style="display:none"></label><span id="avatarUploadStatus" class="post-meta" style="display:block;margin-top:7px"></span><input id="profileAvatarUrl" type="hidden"></div>
+      <div class="upload-tile"><label style="margin-top:0">Portada</label><p class="post-meta">Usa una imagen horizontal para obtener un mejor resultado.</p><label class="btn secondary" style="display:inline-flex;margin:5px 0 0">🖼️ Elegir portada<input id="profileCoverFile" type="file" accept="image/*" style="display:none"></label><span id="coverUploadStatus" class="post-meta" style="display:block;margin-top:7px"></span><input id="profileCoverUrl" type="hidden"></div>
+      <div class="full"><button class="btn primary" id="saveSocialProfile">Guardar cambios del perfil</button></div>
+    </div>
   </div>
 </div>
 </section>
 
-<section id="tab-notificaciones" class="tab hidden"><div class="card section"><div class="toolbar"><h2>Notificaciones</h2><button class="btn secondary" id="markNotifications">Marcar como leídas</button></div><div id="notificationsArea"></div></div></section>
+<section id="tab-notificaciones" class="tab hidden">
+<div class="page-shell">
+  <div class="page-head">
+    <div class="page-head-row"><div class="page-title-wrap"><div class="page-icon">🔔</div><div><h1 class="page-title">Notificaciones</h1><div class="page-sub">Actividad relacionada con amistades, comentarios y reacciones.</div></div></div><div class="page-actions"><button class="btn secondary" id="markNotifications">✓ Marcar todas como leídas</button></div></div>
+    <div class="page-kpis"><div class="metric-chip"><b id="notifUnread">0</b><span>Nuevas</span></div><div class="metric-chip"><b id="notifTotal">0</b><span>Total</span></div></div>
+  </div>
+  <div class="card content-panel notification-panel"><div id="notificationsArea"></div></div>
+</div>
+</section>
 
 <section id="tab-planificador" class="tab hidden">
-<div class="card section">
-<div class="toolbar"><div><h2 style="margin-bottom:4px">Planificador académico</h2><span style="font-size:13px;color:var(--muted)">Selecciona materia y, cuando exista, el docente/paralelo disponible.</span></div><button class="btn primary" id="savePlan">Registrar selección</button></div>
-<div class="filters"><select id="planTerm"><option>1/2026</option><option selected>2/2026</option><option>1/2027</option><option>2/2027</option></select><select id="planSemester"></select><input id="planSearch" placeholder="Buscar materia, código o docente..."></div>
-<div class="note warn">Los docentes y paralelos se cargaron desde el portal académico de la USB. Los horarios exactos pueden cambiar por gestión; cuando no estén publicados en la fuente consultada se muestra “Horario por confirmar”.</div>
-<div id="plannerArea" style="margin-top:12px"></div>
+<div class="page-shell">
+  <div class="page-head">
+    <div class="page-head-row"><div class="page-title-wrap"><div class="page-icon">🧭</div><div><h1 class="page-title">Planificador académico</h1><div class="page-sub">Explora la oferta por semestre, selecciona docente y paralelo y registra tu planificación.</div></div></div><div class="page-actions"><button class="btn primary" id="savePlan">✓ Registrar selección</button></div></div>
+    <div class="page-kpis"><div class="metric-chip"><b id="plannerSubjects">0</b><span>Materias del semestre</span></div><div class="metric-chip"><b id="plannerSelected">0</b><span>Ya registradas</span></div></div>
+  </div>
+  <div class="filters-pro">
+    <div class="filter-field"><label>Gestión</label><select id="planTerm"><option>1/2026</option><option selected>2/2026</option><option>1/2027</option><option>2/2027</option></select></div>
+    <div class="filter-field"><label>Semestre</label><select id="planSemester"></select></div>
+    <div class="filter-field wide"><label>Búsqueda</label><input id="planSearch" placeholder="Buscar materia, código o docente..."></div>
+  </div>
+  <div class="note warn">💡 Selecciona un docente/paralelo cuando exista oferta. Si todavía no está publicada, puedes registrar la materia sin docente y completarla después.</div>
+  <div id="plannerArea"></div>
 </div>
 </section>
 
-<section id="tab-materias" class="tab hidden"><div class="card section"><div class="toolbar"><div><h2 style="margin-bottom:4px">Mis materias</h2><span style="font-size:13px;color:var(--muted)">Materias registradas y docente/paralelo elegido.</span></div><button class="btn secondary" id="goPlanner">+ Agregar desde planificador</button></div><div id="subjectsArea"></div></div></section>
+<section id="tab-materias" class="tab hidden">
+<div class="page-shell">
+  <div class="page-head">
+    <div class="page-head-row"><div class="page-title-wrap"><div class="page-icon">📚</div><div><h1 class="page-title">Mis materias</h1><div class="page-sub">Tu selección académica, docentes, paralelos y estado de avance.</div></div></div><div class="page-actions"><button class="btn primary" id="goPlanner">+ Agregar materia</button></div></div>
+    <div class="page-kpis"><div class="metric-chip"><b id="subjectTotal">0</b><span>Total</span></div><div class="metric-chip"><b id="subjectCurrent">0</b><span>Cursando</span></div><div class="metric-chip"><b id="subjectApproved">0</b><span>Aprobadas</span></div></div>
+  </div>
+  <div id="subjectsArea"></div>
+</div>
+</section>
 
-<section id="tab-horario" class="tab hidden"><div class="card section"><div class="toolbar"><div><h2 style="margin-bottom:4px">Mi horario semanal</h2><span style="font-size:13px;color:var(--muted)">Lunes a viernes · detecta automáticamente choques de horario.</span></div></div><div id="conflictArea"></div><div id="weekGrid" class="week-grid"></div><h3 style="margin-top:18px">Detalle de materias</h3><div id="scheduleArea"></div></div></section>
+<section id="tab-horario" class="tab hidden">
+<div class="page-shell">
+  <div class="page-head">
+    <div class="page-head-row"><div class="page-title-wrap"><div class="page-icon">🗓️</div><div><h1 class="page-title">Mi horario semanal</h1><div class="page-sub">Visualiza tus clases de lunes a viernes y detecta automáticamente cruces de horario.</div></div></div></div>
+    <div class="page-kpis"><div class="metric-chip"><b id="scheduleSubjects">0</b><span>Materias</span></div><div class="metric-chip"><b id="scheduleConflicts">0</b><span>Choques</span></div></div>
+  </div>
+  <div class="schedule-overview"><div id="conflictArea"></div><div id="weekGrid" class="week-grid"></div></div>
+  <div class="card content-panel"><div class="panel-title"><div><h3>Detalle de clases</h3><p>Docente, paralelo, turno, día y hora de cada materia.</p></div></div><div id="scheduleArea"></div></div>
+</div>
+</section>
 
-<section id="tab-malla" class="tab hidden"><div class="card section"><div class="toolbar"><div><h2 style="margin-bottom:4px">Malla curricular</h2><span style="font-size:13px;color:var(--muted)">Plan 2017 - Ingeniería de Sistemas</span></div><input id="mallaSearch" style="max-width:300px" placeholder="Buscar materia..."></div><div id="mallaArea" class="malla-grid"></div></div></section>
+<section id="tab-malla" class="tab hidden">
+<div class="page-shell">
+  <div class="page-head">
+    <div class="page-head-row"><div class="page-title-wrap"><div class="page-icon">🧩</div><div><h1 class="page-title">Malla curricular</h1><div class="page-sub">Plan 2017 · Ingeniería de Sistemas · materias, áreas y prerrequisitos por semestre.</div></div></div><div class="page-actions"><input id="mallaSearch" placeholder="Buscar materia, código o área..."></div></div>
+    <div class="page-kpis"><div class="metric-chip"><b id="mallaSubjects">0</b><span>Materias</span></div><div class="metric-chip"><b>10</b><span>Semestres</span></div></div>
+  </div>
+  <div id="mallaArea" class="malla-grid"></div>
+</div>
+</section>
 
-<section id="tab-perfil" class="tab hidden"><div class="card section"><h2>Mi cuenta</h2><p style="color:var(--muted)">Puedes cambiar tu contraseña de acceso.</p><form id="passwordForm" style="max-width:450px"><label>Nueva contraseña</label><input id="newPassword" type="password" minlength="8" required placeholder="Mínimo 8 caracteres"><label>Confirmar contraseña</label><input id="newPassword2" type="password" minlength="8" required><button class="btn primary" style="margin-top:12px">Cambiar contraseña</button></form><div id="passwordMsg"></div></div></section>
+<section id="tab-perfil" class="tab hidden">
+<div class="page-shell">
+  <div class="page-head"><div class="page-head-row"><div class="page-title-wrap"><div class="page-icon">🔐</div><div><h1 class="page-title">Seguridad de mi cuenta</h1><div class="page-sub">Administra tu contraseña de acceso al sistema.</div></div></div></div></div>
+  <div class="security-layout">
+    <div class="security-visual"><div><div class="security-icon">🛡️</div><h2>Protege tu cuenta</h2><p>Usa una contraseña diferente a las que utilizas en otros servicios y evita compartirla.</p></div><div class="security-tip">Los usuarios @usb.bo son identificadores internos de este sistema.</div></div>
+    <div class="card security-form"><h2 style="margin-top:0">Cambiar contraseña</h2><p class="post-meta">La nueva contraseña debe tener al menos 8 caracteres.</p><form id="passwordForm"><label>Nueva contraseña</label><input id="newPassword" type="password" minlength="8" required placeholder="Mínimo 8 caracteres"><label>Confirmar nueva contraseña</label><input id="newPassword2" type="password" minlength="8" required><button class="btn primary" style="margin-top:14px;width:100%">Actualizar contraseña</button></form><div id="passwordMsg"></div></div>
+  </div>
+</div>
+</section>
 
-<section id="tab-usuarios" class="tab hidden"><div class="card section"><h2>Usuarios del curso</h2><div class="table-wrap"><table><thead><tr><th>Nombre</th><th>Correo</th><th>Rol</th><th>Materias</th></tr></thead><tbody id="usersBody"></tbody></table></div></div></section>
+<section id="tab-usuarios" class="tab hidden">
+<div class="page-shell">
+  <div class="page-head">
+    <div class="page-head-row"><div class="page-title-wrap"><div class="page-icon">👥</div><div><h1 class="page-title">Administración de usuarios</h1><div class="page-sub">Consulta la comunidad registrada, roles y actividad académica.</div></div></div></div>
+    <div class="page-kpis"><div class="metric-chip"><b id="adminUsersTotal">0</b><span>Usuarios</span></div><div class="metric-chip"><b id="adminStudentsTotal">0</b><span>Estudiantes</span></div><div class="metric-chip"><b id="adminAdminsTotal">0</b><span>Administradores</span></div></div>
+  </div>
+  <div class="card content-panel"><div class="panel-title"><div><h3>Usuarios del sistema</h3><p>Perfiles autorizados y cantidad de materias registradas.</p></div></div><div class="table-wrap"><table><thead><tr><th>Usuario</th><th>Correo</th><th>Rol</th><th>Semestre</th><th>Materias</th></tr></thead><tbody id="usersBody"></tbody></table></div></div>
+</div>
+</section>
 
-<section id="tab-oferta" class="tab hidden"><div class="card section"><div class="toolbar"><div><h2 style="margin-bottom:4px">Oferta académica</h2><span style="font-size:13px;color:var(--muted)">Docentes, paralelos, turno y horario. Solo ADMIN.</span></div><input id="offerSearch" style="max-width:300px" placeholder="Buscar docente o materia..."></div><div class="note"><b>Administrador:</b> completa día, hora de inicio y fin con “Editar horario”. Con esos datos el sistema arma automáticamente la cuadrícula semanal y detecta choques. El enlace público de GitHub Pages no cambia.</div><div id="offersAdminArea" style="margin-top:12px"></div></div></section>
+<section id="tab-oferta" class="tab hidden">
+<div class="page-shell">
+  <div class="page-head">
+    <div class="page-head-row"><div class="page-title-wrap"><div class="page-icon">👨‍🏫</div><div><h1 class="page-title">Oferta académica</h1><div class="page-sub">Gestiona docentes, paralelos, turnos y horarios publicados para los estudiantes.</div></div></div><div class="page-actions"><input id="offerSearch" placeholder="Buscar docente, materia o paralelo..."></div></div>
+    <div class="page-kpis"><div class="metric-chip"><b id="offersTotal">0</b><span>Ofertas activas</span></div><div class="metric-chip"><b id="offersScheduled">0</b><span>Con horario</span></div><div class="metric-chip"><b id="offersPending">0</b><span>Por confirmar</span></div></div>
+  </div>
+  <div class="note">🛠️ <b>ADMIN:</b> usa “Editar horario” para completar día, hora de inicio, fin y referencia. La cuadrícula del estudiante se actualiza automáticamente.</div>
+  <div class="card content-panel"><div id="offersAdminArea"></div></div>
+</div>
+</section>
 
-<section id="tab-auditoria" class="tab hidden"><div class="card section"><h2>Historial de cambios</h2><div id="auditArea" class="timeline"></div></div></section>
+<section id="tab-auditoria" class="tab hidden">
+<div class="page-shell">
+  <div class="page-head">
+    <div class="page-head-row"><div class="page-title-wrap"><div class="page-icon">🧾</div><div><h1 class="page-title">Auditoría</h1><div class="page-sub">Historial de acciones y movimientos registrados dentro del sistema.</div></div></div></div>
+    <div class="page-kpis"><div class="metric-chip"><b id="auditTotal">0</b><span>Movimientos</span></div></div>
+  </div>
+  <div class="card content-panel"><div id="auditArea" class="timeline"></div></div>
+</div>
+</section>
 </div>
 </div>
 <nav class="mobile-nav" aria-label="Navegación móvil">
@@ -317,6 +445,23 @@ function updateSocialCounters(){
  updateIdentityUI();
 }
 if($('globalSearch'))$('globalSearch').addEventListener('keydown',e=>{if(e.key==='Enter'){switchTab('personas');$('peopleSearch').value=e.target.value;renderPeople()}});
+function updateTabKpis(){
+ const mine=subjects.filter(s=>s.user_id===profile.user_id);
+ const friends=friendships.filter(f=>f.status==='ACCEPTED'&&(f.requester_id===profile.user_id||f.addressee_id===profile.user_id));
+ const requests=friendships.filter(f=>f.status==='PENDING'&&f.addressee_id===profile.user_id);
+ const unread=notifications.filter(n=>!n.read_at);
+ const set=(id,v)=>{if($(id))$(id).textContent=v};
+ set('peopleTotal',Math.max(0,profiles.length-1));set('peopleFriends',friends.length);set('peoplePending',requests.length);
+ set('friendsTotal',friends.length);set('requestsTotal',requests.length);
+ set('profileFriendsCount',friends.length);set('profilePostCount',posts.filter(p=>p.user_id===profile.user_id).length);set('profileSubjectCount',mine.length);
+ set('notifUnread',unread.length);set('notifTotal',notifications.length);
+ const sem=Number($('planSemester')?.value||0);const semRows=pensum.filter(p=>p.semester===sem);set('plannerSubjects',semRows.length);set('plannerSelected',semRows.filter(p=>subjects.some(s=>s.user_id===profile.user_id&&s.pensum_id===p.id&&s.academic_term===$('planTerm')?.value)).length);
+ set('subjectTotal',mine.length);set('subjectCurrent',mine.filter(s=>s.status==='Cursando').length);set('subjectApproved',mine.filter(s=>s.status==='Aprobada').length);
+ set('scheduleSubjects',mine.length);set('mallaSubjects',pensum.length);
+ set('adminUsersTotal',profiles.length);set('adminStudentsTotal',profiles.filter(p=>p.role==='ESTUDIANTE').length);set('adminAdminsTotal',profiles.filter(p=>p.role==='ADMIN').length);
+ set('offersTotal',offerings.length);set('offersScheduled',offerings.filter(o=>o.weekday&&o.start_time&&o.end_time).length);set('offersPending',offerings.filter(o=>!o.weekday||!o.start_time||!o.end_time).length);
+ set('auditTotal',audits.length);
+}
 async function refreshAll(){
  const p=await sb.from('usb_pensum').select('*').order('semester').order('code');pensum=p.data||[];
  const o=await sb.from('usb_offerings').select('*').eq('active',true).order('teacher');offerings=o.data||[];
@@ -330,7 +475,7 @@ async function refreshAll(){
  const co=await sb.from('usb_post_comments').select('*').order('created_at');comments=co.data||[];
  const re=await sb.from('usb_post_reactions').select('*');reactions=re.data||[];
  const no=await sb.from('usb_notifications').select('*').eq('recipient_id',profile.user_id).order('created_at',{ascending:false});notifications=no.data||[];
- updateSocialCounters();
+ updateSocialCounters();updateTabKpis();
  renderSubjects();renderPlanner();renderSchedule();renderMalla();renderFeed();renderPeople();renderFriends();renderSocialProfile();renderNotifications();if(profile.role==='ADMIN')renderAdminOffers()
 }
 function offerFor(id){return offerings.find(o=>o.id===id)}
@@ -339,7 +484,7 @@ function renderPlanner(){
  const rows=pensum.filter(p=>p.semester===sem).filter(p=>!search||[p.code,p.name,p.area,...offerings.filter(o=>o.pensum_id===p.id).map(o=>o.teacher)].join(' ').toLowerCase().includes(search));
  $('plannerArea').innerHTML=rows.map(p=>{const os=offerings.filter(o=>o.pensum_id===p.id);const already=subjects.find(s=>s.user_id===profile.user_id&&s.pensum_id===p.id&&s.academic_term===$('planTerm').value);return `<div class="subject-card"><div class="subject-head"><div><div class="subject-title">${esc(p.code)} · ${esc(p.name)}</div><div class="subject-meta">${esc(p.area||'')} ${p.prerequisite_code?'· Prerrequisito: '+esc(p.prerequisite_code):''}</div></div>${already?'<span class="badge green">YA REGISTRADA</span>':'<span class="badge">'+sem+'° SEM.</span>'}</div>${os.length?`<div class="offerings">${os.map(o=>`<label class="offer"><input type="radio" name="off_${p.id}" value="${o.id}" ${already?.offering_id===o.id?'checked':''}><div><strong>${esc(o.teacher)}</strong><small>Paralelo ${esc(o.parallel)} · ${esc(o.shift||'POR CONFIRMAR')}<br>${esc(o.schedule_text||'Horario por confirmar')}</small></div></label>`).join('')}</div>`:`<label class="offer" style="margin-top:10px"><input type="checkbox" class="nooffer" data-pid="${p.id}"><div><strong>Registrar sin docente/paralelo</strong><small>No se encontró oferta docente en la fuente cargada.</small></div></label>`}</div>`}).join('')||'<p style="color:var(--muted)">No hay resultados.</p>'
 }
-$('planSemester').onchange=renderPlanner;$('planSearch').oninput=renderPlanner;$('planTerm').onchange=renderPlanner;
+$('planSemester').onchange=()=>{renderPlanner();updateTabKpis()};$('planSearch').oninput=renderPlanner;$('planTerm').onchange=()=>{renderPlanner();updateTabKpis()};
 $('savePlan').onclick=async()=>{
  const term=$('planTerm').value;const sem=Number($('planSemester').value);const ps=pensum.filter(p=>p.semester===sem);let rows=[];
  for(const p of ps){const radio=document.querySelector(`input[name="off_${p.id}"]:checked`);const no=document.querySelector(`.nooffer[data-pid="${p.id}"]:checked`);if(!radio&&!no)continue;let data={user_id:profile.user_id,pensum_id:p.id,academic_term:term,status:'Cursando'};if(radio){const o=offerFor(Number(radio.value));data.offering_id=o.id;data.teacher=o.teacher;data.parallel=o.parallel;data.shift=o.shift}else{data.teacher='';data.parallel='';data.shift=''}rows.push(data)}
@@ -348,8 +493,8 @@ $('savePlan').onclick=async()=>{
 }
 function renderSubjects(){
  const list=subjects.filter(x=>x.user_id===profile.user_id);
- if(!list.length){$('subjectsArea').innerHTML='<p style="color:var(--muted)">Todavía no registraste materias.</p>';return}
- $('subjectsArea').innerHTML='<div class="table-wrap"><table><thead><tr><th>Gestión</th><th>Sem.</th><th>Materia</th><th>Docente</th><th>Paralelo</th><th>Turno</th><th>Estado</th><th>Acciones</th></tr></thead><tbody>'+list.map(s=>`<tr><td>${esc(s.academic_term)}</td><td>${s.usb_pensum?.semester||''}°</td><td><b>${esc(s.usb_pensum?.code||'')}</b><br>${esc(s.usb_pensum?.name||'')}</td><td>${esc(s.teacher||'Por definir')}</td><td>${esc(s.parallel||'-')}</td><td>${esc(s.shift||'-')}</td><td><span class="badge green">${esc(s.status)}</span></td><td><div class="actions"><button class="success" onclick="editSubject(${s.id})">Editar</button><button class="danger" onclick="deleteSubject(${s.id})">Eliminar</button></div></td></tr>`).join('')+'</tbody></table></div>'
+ if(!list.length){$('subjectsArea').innerHTML='<div class="card content-panel" style="text-align:center"><div style="font-size:44px">📚</div><h3>Todavía no registraste materias</h3><p class="post-meta">Ve al Planificador para seleccionar las materias de tu gestión.</p><button class="btn primary" onclick="switchTab(\'planificador\')">Abrir planificador</button></div>';return}
+ $('subjectsArea').innerHTML='<div class="subjects-grid">'+list.map(s=>`<article class="subject-tile"><div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start"><span class="subject-code">${esc(s.usb_pensum?.code||'')}</span><span class="badge ${s.status==='Aprobada'?'green':s.status==='Cursando'?'purple':'gold'}">${esc(s.status)}</span></div><div class="subject-name-big">${esc(s.usb_pensum?.name||'')}</div><div class="post-meta">${esc(s.academic_term)} · ${s.usb_pensum?.semester||''}° semestre</div><div class="subject-facts"><div class="fact-box"><small>Docente</small><b>${esc(s.teacher||'Por definir')}</b></div><div class="fact-box"><small>Paralelo</small><b>${esc(s.parallel||'-')}</b></div><div class="fact-box"><small>Turno</small><b>${esc(s.shift||'-')}</b></div><div class="fact-box"><small>Área</small><b>${esc(s.usb_pensum?.area||'-')}</b></div></div><div class="subject-actions"><button class="btn secondary" onclick="editSubject(${s.id})">✏️ Editar</button><button class="btn danger" onclick="deleteSubject(${s.id})">🗑 Eliminar</button></div></article>`).join('')+'</div>'
 }
 window.editSubject=async id=>{const s=subjects.find(x=>x.id===id&&x.user_id===profile.user_id);if(!s)return;const status=prompt('Estado: Cursando / Aprobada / Pendiente',s.status);if(status===null)return;const note=prompt('Observación',s.note||'');if(note===null)return;const{error}=await sb.from('usb_student_subjects').update({status,note}).eq('id',id);if(error)alert(error.message);else refreshAll()};
 window.deleteSubject=async id=>{if(!confirm('¿Eliminar esta materia?'))return;const{error}=await sb.from('usb_student_subjects').delete().eq('id',id);if(error)alert(error.message);else refreshAll()};
@@ -370,7 +515,7 @@ function renderSchedule(){
  const days=['LUNES','MARTES','MIERCOLES','JUEVES','VIERNES'];
  if(!list.length){$('conflictArea').innerHTML='';$('weekGrid').innerHTML='';$('scheduleArea').innerHTML='<p style="color:var(--muted)">Registra materias desde el Planificador para ver tu horario.</p>';return}
  const conflicts=detectConflicts(list);
- const conflictIds=new Set(conflicts.flatMap(c=>[c.a.id,c.b.id]));
+ const conflictIds=new Set(conflicts.flatMap(c=>[c.a.id,c.b.id]));if($('scheduleConflicts'))$('scheduleConflicts').textContent=conflicts.length;
  $('conflictArea').innerHTML=conflicts.length
    ? `<div class="conflict-box"><b>⚠ Se detectaron ${conflicts.length} choque(s) de horario.</b><br>${conflicts.map(c=>`${esc(c.day)}: ${esc(c.a.usb_pensum?.name||'')} ↔ ${esc(c.b.usb_pensum?.name||'')}`).join('<br>')}</div>`
    : `<div class="ok-box"><b>✓ Sin choques detectados.</b> Solo se comparan materias que tengan día y hora cargados.</div>`;
@@ -381,13 +526,13 @@ function renderSchedule(){
  $('scheduleArea').innerHTML=list.map(s=>{const o=offerFor(s.offering_id);return `<div class="schedule-card"><div class="name">${esc(s.usb_pensum?.code||'')} · ${esc(s.usb_pensum?.name||'')}</div><div class="details"><b>Docente:</b> ${esc(s.teacher||'Por definir')} · <b>Paralelo:</b> ${esc(s.parallel||'-')} · <b>Turno:</b> ${esc(s.shift||'-')}<br><b>Día:</b> ${esc(o?.weekday||'Por confirmar')} · <b>Hora:</b> ${esc(o?.start_time?String(o.start_time).slice(0,5):'--:--')} - ${esc(o?.end_time?String(o.end_time).slice(0,5):'--:--')}<br><b>Referencia:</b> ${esc(o?.schedule_text||'Horario por confirmar')}</div></div>`}).join('')
 }
 function renderMalla(){
- const search=($('mallaSearch').value||'').toLowerCase();let html='';for(let sem=1;sem<=10;sem++){const rows=pensum.filter(p=>p.semester===sem).filter(p=>!search||[p.code,p.name,p.area,p.prerequisite_code].join(' ').toLowerCase().includes(search));if(!rows.length&&search)continue;html+=`<div class="semester-box"><h3>${sem}° semestre</h3><ul>${rows.map(p=>`<li><b>${esc(p.code)}</b> ${esc(p.name)}<br><small style="color:var(--muted)">${esc(p.area||'')}${p.prerequisite_code?' · Pre: '+esc(p.prerequisite_code):''}</small></li>`).join('')}</ul></div>`}$('mallaArea').innerHTML=html}
+ const search=($('mallaSearch').value||'').toLowerCase();let html='';for(let sem=1;sem<=10;sem++){const rows=pensum.filter(p=>p.semester===sem).filter(p=>!search||[p.code,p.name,p.area,p.prerequisite_code].join(' ').toLowerCase().includes(search));if(!rows.length&&search)continue;html+=`<div class="semester-box"><h3><span>${sem}° semestre</span><span class="semester-count">${rows.length} materias</span></h3><ul>${rows.map(p=>`<li><span class="semester-code">${esc(p.code)}</span><b>${esc(p.name)}</b><br><small style="color:var(--muted)">${esc(p.area||'Sin área')}${p.prerequisite_code?' · Prerrequisito: '+esc(p.prerequisite_code):''}</small></li>`).join('')}</ul></div>`}$('mallaArea').innerHTML=html||'<div class="card content-panel">No se encontraron materias.</div>'}
 $('mallaSearch').oninput=renderMalla;
-function renderUsers(){$('usersBody').innerHTML=profiles.map(u=>`<tr><td><b>${esc(u.full_name)}</b></td><td>${esc(u.email)}</td><td><span class="badge ${u.role==='ADMIN'?'admin':''}">${esc(u.role)}</span></td><td>${subjects.filter(s=>s.user_id===u.user_id).length}</td></tr>`).join('')}
-function renderAudit(){$('auditArea').innerHTML=audits.length?audits.map(a=>`<div class="audit-item"><b>${esc(a.actor_email||'sistema')} · ${esc(a.action)}</b><p>${new Date(a.created_at).toLocaleString('es-BO')} · Registro ${esc(a.record_id||'')}</p></div>`).join(''):'<p style="color:var(--muted)">Sin movimientos.</p>'}
+function renderUsers(){$('usersBody').innerHTML=profiles.map(u=>`<tr><td><div class="user-cell"><div class="mini-avatar">${avatarHtml(u)}</div><div><b>${esc(u.full_name)}</b><div class="post-meta">${esc(u.career||'Ingeniería de Sistemas')}</div></div></div></td><td>${esc(u.email)}</td><td><span class="badge ${u.role==='ADMIN'?'admin':''}">${esc(u.role)}</span></td><td>${u.semester?u.semester+'°':'-'}</td><td><b>${subjects.filter(s=>s.user_id===u.user_id).length}</b></td></tr>`).join('')}
+function renderAudit(){$('auditArea').innerHTML=audits.length?audits.map(a=>`<div class="audit-item"><b>${esc(a.action)}</b><div style="margin-top:2px">${esc(a.actor_email||'sistema')}</div><p>${new Date(a.created_at).toLocaleString('es-BO')} · Registro ${esc(a.record_id||'—')}</p></div>`).join(''):'<div style="text-align:center;padding:34px;color:var(--muted)"><div style="font-size:42px">🧾</div><h3>Sin movimientos</h3><p>Las acciones registradas aparecerán aquí.</p></div>'}
 function renderAdminOffers(){
  const search=($('offerSearch').value||'').toLowerCase();const rows=offerings.filter(o=>{const p=pensum.find(x=>x.id===o.pensum_id);return !search||[o.teacher,o.parallel,o.shift,o.schedule_text,o.weekday,o.start_time,o.end_time,p?.code,p?.name].join(' ').toLowerCase().includes(search)});
- $('offersAdminArea').innerHTML='<div class="table-wrap"><table><thead><tr><th>Materia</th><th>Docente</th><th>Paralelo</th><th>Turno</th><th>Día</th><th>Hora</th><th>Referencia</th><th>Acción</th></tr></thead><tbody>'+rows.map(o=>{const p=pensum.find(x=>x.id===o.pensum_id);return `<tr><td><b>${esc(p?.code||'')}</b><br>${esc(p?.name||'')}</td><td>${esc(o.teacher)}</td><td>${esc(o.parallel)}</td><td>${esc(o.shift)}</td><td>${esc(o.weekday||'Por confirmar')}</td><td>${esc(o.start_time?String(o.start_time).slice(0,5):'--:--')} - ${esc(o.end_time?String(o.end_time).slice(0,5):'--:--')}</td><td>${esc(o.schedule_text||'Por confirmar')}</td><td><button class="btn secondary" onclick="editOffering(${o.id})">Editar horario</button></td></tr>`}).join('')+'</tbody></table></div>'
+ $('offersAdminArea').innerHTML='<div class="table-wrap"><table><thead><tr><th>Materia</th><th>Docente</th><th>Paralelo</th><th>Turno</th><th>Programación</th><th>Estado</th><th>Acción</th></tr></thead><tbody>'+rows.map(o=>{const p=pensum.find(x=>x.id===o.pensum_id);const ready=o.weekday&&o.start_time&&o.end_time;return `<tr><td><span class="subject-code">${esc(p?.code||'')}</span><br><b style="display:inline-block;margin-top:6px">${esc(p?.name||'')}</b></td><td>${esc(o.teacher)}</td><td><span class="badge">${esc(o.parallel)}</span></td><td>${esc(o.shift)}</td><td><b>${esc(o.weekday||'Por confirmar')}</b><br><span class="post-meta">${esc(o.start_time?String(o.start_time).slice(0,5):'--:--')} - ${esc(o.end_time?String(o.end_time).slice(0,5):'--:--')}</span></td><td><span class="badge ${ready?'green':'gold'}">${ready?'Completo':'Pendiente'}</span></td><td><button class="btn secondary" onclick="editOffering(${o.id})">✏️ Editar</button></td></tr>`}).join('')+'</tbody></table></div>'
 }
 $('offerSearch').oninput=renderAdminOffers;
 window.editOffering=async id=>{
