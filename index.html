@@ -96,6 +96,12 @@ html{scroll-behavior:smooth} body{min-height:100vh;background:linear-gradient(18
  .mobile-drawer.open{transform:translateX(0)}.mobile-drawer-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;font-size:20px}.mobile-drawer-profile{display:flex;align-items:center;gap:10px;padding:12px;border-radius:14px;background:#f5f8fc;margin-bottom:12px}
 }
 
+
+.login{max-width:1000px;margin:42px auto;padding:0;overflow:hidden;display:grid;grid-template-columns:1.05fr .95fr;min-height:570px}
+.login:before{display:none!important;content:none!important}.login-promo{padding:42px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;background:radial-gradient(circle at 85% 18%,rgba(255,255,255,.2),transparent 26%),linear-gradient(145deg,#0b4ca2,#1877f2 62%,#5ba7ff)}.login-promo-badge{display:inline-flex;padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);font-size:11px;font-weight:900;letter-spacing:.14em}.login-promo h1{font-size:38px;line-height:1.05;letter-spacing:-.04em;max-width:470px;margin:20px 0 14px}.login-promo p{line-height:1.55;opacity:.92;max-width:500px}.login-promo-features{display:flex;gap:10px;flex-wrap:wrap}.login-promo-features span{padding:9px 11px;border-radius:12px;background:rgba(255,255,255,.12);font-size:12px;font-weight:800}.login-panel{padding:42px;display:flex;flex-direction:column;justify-content:center;background:#fff}.login-mark{display:flex;align-items:center;gap:11px;margin-bottom:24px}.login-mark b{display:block}.login-mark small{display:block;color:var(--muted);margin-top:3px}.login-panel h2{font-size:30px;letter-spacing:-.03em;margin:0 0 6px}.login-panel>p{color:var(--muted);margin:0 0 18px}.login-submit{width:100%;margin-top:18px;min-height:46px}.recovery-panel{margin-top:16px;padding:16px;border:1px solid #d8e7fb;border-radius:14px;background:#f7fbff}.recovery-panel h3{margin:0 0 6px}.recovery-panel p{font-size:12px;line-height:1.45;color:var(--muted);margin:0 0 8px}
+@media(max-width:760px){.login{display:block;min-height:0;margin:14px auto;max-width:520px}.login-promo{padding:24px;min-height:190px}.login-promo h1{font-size:27px;margin:14px 0 9px}.login-promo p{font-size:13px;margin-bottom:14px}.login-panel{padding:24px}.login-mark{margin-bottom:18px}.login-panel h2{font-size:25px}}
+@media(max-width:420px){.login-promo{padding:19px;min-height:170px}.login-promo h1{font-size:24px}.login-promo-features span{padding:7px 8px}.login-panel{padding:20px}}
+
 </style>
 </head>
 <body>
@@ -110,13 +116,26 @@ html{scroll-behavior:smooth} body{min-height:100vh;background:linear-gradient(18
 </div></div></header>
 <main class="container">
 <section id="loginView" class="card login">
-<h2>Ingreso al sistema</h2>
-<p style="color:var(--muted);font-size:14px">Ingresa con tu usuario de la Universidad Salesiana.</p>
-<form id="loginForm">
-<label>Correo</label><input id="email" type="email" required placeholder="usuario@usb.bo">
-<label>Contraseña</label><input id="password" type="password" required>
-<button class="btn primary" style="width:100%;margin-top:16px">Ingresar</button>
-</form><button type="button" class="btn secondary" id="forgotPassword" style="width:100%;margin-top:10px">¿Olvidaste tu contraseña?</button><div id="loginMsg"></div><div id="recoveryBox" class="hidden" style="margin-top:16px;padding-top:16px;border-top:1px solid var(--borde)"><h3>Recuperar contraseña</h3><label>Correo</label><input id="recoveryEmail" type="email" placeholder="usuario@usb.bo"><button type="button" class="btn primary" id="sendRecovery" style="width:100%;margin-top:10px">Enviar enlace de recuperación</button></div><div id="newPasswordBox" class="hidden" style="margin-top:16px;padding-top:16px;border-top:1px solid var(--borde)"><h3>Nueva contraseña</h3><label>Nueva contraseña</label><input id="recoveryPassword" type="password" minlength="8"><label>Confirmar contraseña</label><input id="recoveryPassword2" type="password" minlength="8"><button type="button" class="btn primary" id="confirmRecovery" style="width:100%;margin-top:10px">Guardar contraseña</button></div>
+<div class="login-promo">
+  <div><div class="login-promo-badge">USB SOCIAL</div><h1>Tu comunidad académica en un solo lugar.</h1><p>Conecta con compañeros, organiza tus materias, revisa tu horario y participa en la comunidad de Ingeniería de Sistemas.</p></div>
+  <div class="login-promo-features"><span>👥 Comunidad</span><span>📚 Materias</span><span>🗓️ Horarios</span></div>
+</div>
+<div class="login-panel">
+  <div class="login-mark"><div class="logo">USB</div><div><b>USB Social Académico</b><small>Universidad Salesiana</small></div></div>
+  <h2>Bienvenido</h2><p>Ingresa con tu usuario institucional.</p>
+  <form id="loginForm">
+    <label>Correo</label><input id="email" type="email" required placeholder="usuario@usb.bo" autocomplete="username">
+    <label>Contraseña</label><input id="password" type="password" required autocomplete="current-password">
+    <button class="btn primary login-submit">Ingresar al sistema</button>
+  </form>
+  <button type="button" class="btn secondary" id="forgotPassword" style="width:100%;margin-top:10px">¿Olvidaste tu contraseña?</button>
+  <div id="loginMsg"></div>
+  <div id="recoveryBox" class="hidden recovery-panel">
+    <h3>Solicitar nueva contraseña</h3><p>Tu correo @usb.bo funciona como usuario interno. La solicitud será atendida por un ADMIN.</p>
+    <label>Correo</label><input id="recoveryEmail" type="email" placeholder="usuario@usb.bo">
+    <button type="button" class="btn primary" id="sendRecovery" style="width:100%;margin-top:10px">Enviar solicitud al ADMIN</button>
+  </div>
+</div>
 </section>
 
 <section id="appView" class="hidden">
@@ -262,9 +281,7 @@ for(let i=1;i<=10;i++){for(const id of ['planSemester']){const o=document.create
 function msg(id,text){$(id).innerHTML='<div class="msg">'+esc(text)+'</div>'}
 $('loginForm').addEventListener('submit',async e=>{e.preventDefault();const{data,error}=await sb.auth.signInWithPassword({email:$('email').value.trim(),password:$('password').value});if(error)return msg('loginMsg','No se pudo iniciar sesión: '+error.message);session=data.session;await loadProfile()});
 $('forgotPassword').onclick=()=>{$('recoveryBox').classList.toggle('hidden');$('recoveryEmail').value=$('email').value.trim()};
-$('sendRecovery').onclick=async()=>{const email=$('recoveryEmail').value.trim();if(!email)return msg('loginMsg','Ingresa tu correo.');const{error}=await sb.auth.resetPasswordForEmail(email,{redirectTo:'https://alexander-cca.github.io/sistema-materias-usb/'});if(error)return msg('loginMsg','No se pudo enviar el enlace: '+error.message);msg('loginMsg','Revisa tu correo. Se envió un enlace seguro para cambiar la contraseña.')};
-$('confirmRecovery').onclick=async()=>{const a=$('recoveryPassword').value,b=$('recoveryPassword2').value;if(a.length<8)return msg('loginMsg','La contraseña debe tener al menos 8 caracteres.');if(a!==b)return msg('loginMsg','Las contraseñas no coinciden.');const{error}=await sb.auth.updateUser({password:a});if(error)return msg('loginMsg','No se pudo cambiar: '+error.message);await sb.auth.signOut();$('newPasswordBox').classList.add('hidden');msg('loginMsg','Contraseña actualizada. Ya puedes ingresar.')};
-sb.auth.onAuthStateChange((event)=>{if(event==='PASSWORD_RECOVERY'){$('loginView').classList.remove('hidden');$('appView').classList.add('hidden');$('recoveryBox').classList.add('hidden');$('newPasswordBox').classList.remove('hidden');msg('loginMsg','Enlace verificado. Define tu nueva contraseña.')}});
+$('sendRecovery').onclick=async()=>{const email=$('recoveryEmail').value.trim().toLowerCase();if(!email)return msg('loginMsg','Ingresa tu correo.');if(!email.endsWith('@usb.bo'))return msg('loginMsg','Ingresa un usuario @usb.bo válido.');const{error}=await sb.from('usb_password_reset_requests').insert({email,status:'PENDIENTE'});if(error)return msg('loginMsg','No se pudo registrar la solicitud: '+error.message);$('recoveryBox').classList.add('hidden');msg('loginMsg','Solicitud enviada. Un ADMIN podrá asignarte una nueva contraseña manteniendo tu mismo correo.')};
 
 async function loadProfile(){const u=(await sb.auth.getUser()).data.user;if(!u)return;const{data,error}=await sb.from('usb_profiles').select('*').eq('user_id',u.id).single();if(error||!data){await sb.auth.signOut();return msg('loginMsg','Tu correo no está autorizado.')}profile=data;$('loginView').classList.add('hidden');$('appView').classList.remove('hidden');$('who').textContent=profile.full_name;$('whoEmail').textContent=profile.email;$('whoRole').textContent=profile.role;$('whoRole').className='badge '+(profile.role==='ADMIN'?'admin':'');document.querySelectorAll('.admin-only').forEach(x=>x.classList.toggle('hidden',profile.role!=='ADMIN'));$('welcome').textContent=profile.role==='ADMIN'?'Tu espacio de comunidad, gestión académica y administración está listo.':'Conecta con tus compañeros y administra tus materias desde un solo lugar.';$('homeGreeting').textContent='Hola, '+(profile.full_name||'').split(' ')[0]+' 👋';updateIdentityUI();await refreshAll();switchTab('inicio')}
 $('logout').onclick=async()=>{await sb.auth.signOut();location.reload()};
