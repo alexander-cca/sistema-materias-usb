@@ -53,6 +53,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--azul);box-shadow:0 0 
 .ok-box{margin:10px 0 14px;padding:11px 13px;border-radius:10px;background:#dcfce7;color:#166534;border:1px solid #bbf7d0;font-size:13px}
 .kpi-note{font-size:12px;color:var(--muted);margin-top:5px}
 .actions{display:flex;gap:6px;flex-wrap:wrap}.actions button{border:0;border-radius:8px;padding:7px 9px;font-size:12px;font-weight:700}
+.social-layout{display:grid;grid-template-columns:minmax(0,2fr) minmax(260px,1fr);gap:16px}.composer{padding:16px;margin-bottom:14px}.composer textarea{min-height:90px;resize:vertical}.post{padding:16px;margin-bottom:14px}.post-head{display:flex;gap:10px;align-items:center}.avatar{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:#eaf0ff;color:var(--azul);font-weight:900;overflow:hidden}.avatar img{width:100%;height:100%;object-fit:cover}.post-meta{font-size:12px;color:var(--muted)}.post-body{margin:12px 0;white-space:pre-wrap;line-height:1.45}.post-img{width:100%;max-height:460px;object-fit:cover;border-radius:12px;border:1px solid var(--borde)}.reaction-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;border-top:1px solid var(--borde);padding-top:10px}.reaction-row button{border:0;background:#eef2f7;border-radius:999px;padding:7px 10px}.comment{padding:8px 0;border-top:1px solid #edf0f5;font-size:13px}.people-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.person{padding:14px;display:flex;gap:10px;align-items:center}.person-main{min-width:0;flex:1}.person-name{font-weight:800}.person-meta{font-size:12px;color:var(--muted);word-break:break-word}.profile-cover{height:180px;border-radius:14px;background:linear-gradient(135deg,#dbe7ff,#f7f9fc);background-size:cover;background-position:center}.profile-header{display:flex;gap:16px;align-items:flex-end;margin-top:-38px;padding:0 18px}.profile-header .avatar{width:90px;height:90px;border:4px solid #fff}.profile-info{padding-bottom:8px}.notif{padding:10px 0;border-bottom:1px solid #edf0f5}
 @media(max-width:900px){.app{grid-template-columns:1fr}.sidebar{position:static}.stats{grid-template-columns:repeat(2,1fr)}.grid3{grid-template-columns:1fr}.offerings{grid-template-columns:1fr}.malla-grid{grid-template-columns:1fr}.filters{grid-template-columns:1fr}.container{padding:12px}}
 @media(max-width:520px){.stats{grid-template-columns:1fr}.grid2{grid-template-columns:1fr}.brand{font-size:17px}.section{padding:14px}}
 </style>
@@ -75,6 +76,11 @@ input:focus,select:focus,textarea:focus{border-color:var(--azul);box-shadow:0 0 
 <aside class="card sidebar">
 <div class="user-chip"><strong id="who"></strong><span id="whoEmail"></span><br><span id="whoRole" class="badge"></span></div>
 <button class="navbtn active" data-tab="inicio">🏠 Inicio</button>
+<button class="navbtn" data-tab="feed">📰 Feed</button>
+<button class="navbtn" data-tab="personas">👤 Personas</button>
+<button class="navbtn" data-tab="amigos">🤝 Amigos</button>
+<button class="navbtn" data-tab="perfil-social">🙋 Mi perfil</button>
+<button class="navbtn" data-tab="notificaciones">🔔 Notificaciones</button>
 <button class="navbtn" data-tab="planificador">🧭 Planificador</button>
 <button class="navbtn" data-tab="materias">📚 Mis materias</button>
 <button class="navbtn" data-tab="horario">🗓️ Mi horario</button>
@@ -102,6 +108,26 @@ input:focus,select:focus,textarea:focus{border-color:var(--azul);box-shadow:0 0 
 </div>
 </div>
 </section>
+
+<section id="tab-feed" class="tab hidden">
+<div class="social-layout">
+<div>
+<div class="card composer"><h2 style="margin-top:0">¿Qué estás pensando?</h2><textarea id="postBody" placeholder="Comparte algo con tus compañeros..."></textarea><label>Imagen por URL (opcional)</label><input id="postImage" placeholder="https://..."><button class="btn primary" id="publishPost" style="margin-top:10px">Publicar</button></div>
+<div id="feedArea"></div>
+</div>
+<div>
+<div class="card section"><h3 style="margin-top:0">Personas sugeridas</h3><div id="suggestedPeople"></div></div>
+</div>
+</div>
+</section>
+
+<section id="tab-personas" class="tab hidden"><div class="card section"><div class="toolbar"><h2>Personas</h2><input id="peopleSearch" style="max-width:320px" placeholder="Buscar por nombre o correo..."></div><div id="peopleArea" class="people-grid"></div></div></section>
+
+<section id="tab-amigos" class="tab hidden"><div class="card section"><h2>Amigos y solicitudes</h2><div class="grid2"><div><h3>Solicitudes recibidas</h3><div id="requestsArea"></div></div><div><h3>Mis amigos</h3><div id="friendsArea"></div></div></div></div></section>
+
+<section id="tab-perfil-social" class="tab hidden"><div class="card section"><div id="profileCover" class="profile-cover"></div><div class="profile-header"><div id="profileAvatar" class="avatar"></div><div class="profile-info"><h2 id="profileName" style="margin:0"></h2><div id="profileMeta" class="post-meta"></div></div></div><div style="margin-top:18px;max-width:700px"><label>Biografía</label><textarea id="profileBio"></textarea><label>Carrera</label><input id="profileCareer"><label>Semestre</label><select id="profileSemester"><option value="">Sin definir</option><option value="1">1° semestre</option><option value="2">2° semestre</option><option value="3">3° semestre</option><option value="4">4° semestre</option><option value="5">5° semestre</option><option value="6">6° semestre</option><option value="7">7° semestre</option><option value="8">8° semestre</option><option value="9">9° semestre</option><option value="10">10° semestre</option></select><label>URL de foto de perfil</label><input id="profileAvatarUrl" placeholder="https://..."><label>URL de portada</label><input id="profileCoverUrl" placeholder="https://..."><button class="btn primary" id="saveSocialProfile" style="margin-top:12px">Guardar perfil</button></div></div></section>
+
+<section id="tab-notificaciones" class="tab hidden"><div class="card section"><div class="toolbar"><h2>Notificaciones</h2><button class="btn secondary" id="markNotifications">Marcar como leídas</button></div><div id="notificationsArea"></div></div></section>
 
 <section id="tab-planificador" class="tab hidden">
 <div class="card section">
@@ -132,7 +158,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--azul);box-shadow:0 0 
 
 <script>
 const sb=supabase.createClient('https://knunvffaamsdrwcggeip.supabase.co','sb_publishable_2ViUuaRJP78DhjUE7NzZNw_5dbr46Wi');
-let session=null,profile=null,pensum=[],subjects=[],offerings=[],profiles=[],audits=[];
+let session=null,profile=null,pensum=[],subjects=[],offerings=[],profiles=[],audits=[],friendships=[],posts=[],comments=[],reactions=[],notifications=[];
 const $=id=>document.getElementById(id);
 const esc=v=>{const d=document.createElement('div');d.textContent=v??'';return d.innerHTML};
 for(let i=1;i<=10;i++){for(const id of ['planSemester']){const o=document.createElement('option');o.value=i;o.textContent=i+'° semestre';$(id).appendChild(o)}}$('planSemester').value='6';
@@ -147,7 +173,7 @@ sb.auth.onAuthStateChange((event)=>{if(event==='PASSWORD_RECOVERY'){$('loginView
 async function loadProfile(){const u=(await sb.auth.getUser()).data.user;if(!u)return;const{data,error}=await sb.from('usb_profiles').select('*').eq('user_id',u.id).single();if(error||!data){await sb.auth.signOut();return msg('loginMsg','Tu correo no está autorizado.')}profile=data;$('loginView').classList.add('hidden');$('appView').classList.remove('hidden');$('who').textContent=profile.full_name;$('whoEmail').textContent=profile.email;$('whoRole').textContent=profile.role;$('whoRole').className='badge '+(profile.role==='ADMIN'?'admin':'');document.querySelectorAll('.admin-only').forEach(x=>x.classList.toggle('hidden',profile.role!=='ADMIN'));$('welcome').textContent=profile.role==='ADMIN'?'Puedes consultar y administrar la oferta académica, usuarios y auditoría, además de registrar tus materias.':'Puedes planificar tu semestre, escoger docente/paralelo y registrar tus materias.';await refreshAll();switchTab('inicio')}
 $('logout').onclick=async()=>{await sb.auth.signOut();location.reload()};
 document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>switchTab(b.dataset.tab));
-function switchTab(t){if(['usuarios','oferta','auditoria'].includes(t)&&profile?.role!=='ADMIN')return;document.querySelectorAll('.tab').forEach(x=>x.classList.add('hidden'));$('tab-'+t).classList.remove('hidden');document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x.dataset.tab===t));if(t==='planificador')renderPlanner();if(t==='malla')renderMalla();if(t==='horario')renderSchedule();if(t==='oferta')renderAdminOffers()}
+function switchTab(t){if(['usuarios','oferta','auditoria'].includes(t)&&profile?.role!=='ADMIN')return;document.querySelectorAll('.tab').forEach(x=>x.classList.add('hidden'));$('tab-'+t).classList.remove('hidden');document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x.dataset.tab===t));if(t==='planificador')renderPlanner();if(t==='malla')renderMalla();if(t==='horario')renderSchedule();if(t==='oferta')renderAdminOffers();if(t==='feed')renderFeed();if(t==='personas')renderPeople();if(t==='amigos')renderFriends();if(t==='perfil-social')renderSocialProfile();if(t==='notificaciones')renderNotifications()}
 $('goPlanner').onclick=()=>switchTab('planificador');
 
 async function refreshAll(){
@@ -157,7 +183,12 @@ async function refreshAll(){
  $('sMaterias').textContent=profile.role==='ADMIN'?subjects.length:subjects.filter(x=>x.user_id===profile.user_id).length;
  const mine=subjects.filter(x=>x.user_id===profile.user_id);$('sSemestre').textContent=mine.length?Math.max(...mine.map(x=>x.usb_pensum?.semester||0))+'°':'-';
  if(profile.role==='ADMIN'){const pr=await sb.from('usb_profiles').select('*').order('full_name');profiles=pr.data||[];$('sUsuarios').textContent=profiles.length;renderUsers();const au=await sb.from('usb_audit').select('*').order('created_at',{ascending:false}).limit(150);audits=au.data||[];$('sCambios').textContent=audits.length;renderAudit()}else{$('sUsuarios').textContent='-';$('sCambios').textContent='-'}
- renderSubjects();renderPlanner();renderSchedule();renderMalla();if(profile.role==='ADMIN')renderAdminOffers()
+ const fr=await sb.from('usb_friendships').select('*').order('created_at',{ascending:false});friendships=fr.data||[];
+ const po=await sb.from('usb_posts').select('*').order('created_at',{ascending:false}).limit(100);posts=po.data||[];
+ const co=await sb.from('usb_post_comments').select('*').order('created_at');comments=co.data||[];
+ const re=await sb.from('usb_post_reactions').select('*');reactions=re.data||[];
+ const no=await sb.from('usb_notifications').select('*').eq('recipient_id',profile.user_id).order('created_at',{ascending:false});notifications=no.data||[];
+ renderSubjects();renderPlanner();renderSchedule();renderMalla();renderFeed();renderPeople();renderFriends();renderSocialProfile();renderNotifications();if(profile.role==='ADMIN')renderAdminOffers()
 }
 function offerFor(id){return offerings.find(o=>o.id===id)}
 function renderPlanner(){
@@ -235,6 +266,30 @@ window.editOffering=async id=>{
  const{error}=await sb.from('usb_offerings').update(payload).eq('id',id);
  if(error)alert(error.message);else refreshAll();
 };
+function personById(id){return profiles.find(p=>p.user_id===id)||{full_name:'Usuario USB',email:'',avatar_url:null}}
+function avatarHtml(p){return p?.avatar_url?`<img src="${esc(p.avatar_url)}" alt="">`:esc((p?.full_name||'U').split(' ').map(x=>x[0]).slice(0,2).join('').toUpperCase())}
+function friendshipWith(uid){return friendships.find(f=>(f.requester_id===profile.user_id&&f.addressee_id===uid)||(f.addressee_id===profile.user_id&&f.requester_id===uid))}
+function isFriend(uid){return friendships.some(f=>f.status==='ACCEPTED'&&((f.requester_id===profile.user_id&&f.addressee_id===uid)||(f.addressee_id===profile.user_id&&f.requester_id===uid)))}
+function renderPeople(){
+ const q=($('peopleSearch')?.value||'').toLowerCase();const arr=profiles.filter(p=>p.user_id!==profile.user_id).filter(p=>!q||[p.full_name,p.email,p.career].join(' ').toLowerCase().includes(q));
+ $('peopleArea').innerHTML=arr.map(p=>{const f=friendshipWith(p.user_id);let action=f?(f.status==='ACCEPTED'?'<span class="badge green">Amigos</span>':f.status==='PENDING'?(f.requester_id===profile.user_id?'<span class="badge gold">Solicitud enviada</span>':'<button class="btn success" onclick="acceptFriend('+f.id+')">Aceptar</button>'):'<button class="btn primary" onclick="sendFriend(\''+p.user_id+'\')">Agregar</button>'):'<button class="btn primary" onclick="sendFriend(\''+p.user_id+'\')">Agregar</button>';return `<div class="card person"><div class="avatar">${avatarHtml(p)}</div><div class="person-main"><div class="person-name">${esc(p.full_name)}</div><div class="person-meta">${esc(p.email)}<br>${esc(p.career||'Ingeniería de Sistemas')}${p.semester?' · '+p.semester+'° semestre':''}</div></div><div>${action}</div></div>`}).join('')||'<p style="color:var(--muted)">No se encontraron personas.</p>';
+ const sug=arr.filter(p=>!friendshipWith(p.user_id)).slice(0,5);if($('suggestedPeople'))$('suggestedPeople').innerHTML=sug.map(p=>`<div class="person" style="padding:8px 0"><div class="avatar">${avatarHtml(p)}</div><div class="person-main"><div class="person-name">${esc(p.full_name)}</div><button class="btn primary" style="margin-top:5px" onclick="sendFriend('${p.user_id}')">Agregar</button></div></div>`).join('')||'<span style="color:var(--muted);font-size:13px">Sin sugerencias por ahora.</span>'
+}
+if($('peopleSearch'))$('peopleSearch').oninput=renderPeople;
+window.sendFriend=async uid=>{const{error}=await sb.from('usb_friendships').insert({requester_id:profile.user_id,addressee_id:uid,status:'PENDING'});if(error)return alert(error.message);await sb.from('usb_notifications').insert({recipient_id:uid,actor_id:profile.user_id,type:'FRIEND_REQUEST',message:profile.full_name+' te envió una solicitud de amistad'});await refreshAll()};
+window.acceptFriend=async id=>{const f=friendships.find(x=>x.id===id);if(!f)return;const{error}=await sb.from('usb_friendships').update({status:'ACCEPTED',responded_at:new Date().toISOString()}).eq('id',id);if(error)return alert(error.message);const other=f.requester_id===profile.user_id?f.addressee_id:f.requester_id;await sb.from('usb_notifications').insert({recipient_id:other,actor_id:profile.user_id,type:'FRIEND_ACCEPTED',message:profile.full_name+' aceptó tu solicitud de amistad'});await refreshAll()};
+window.removeFriend=async id=>{if(!confirm('¿Eliminar esta amistad o solicitud?'))return;await sb.from('usb_friendships').delete().eq('id',id);await refreshAll()};
+function renderFriends(){const incoming=friendships.filter(f=>f.addressee_id===profile.user_id&&f.status==='PENDING');$('requestsArea').innerHTML=incoming.map(f=>{const p=personById(f.requester_id);return `<div class="person"><div class="avatar">${avatarHtml(p)}</div><div class="person-main"><b>${esc(p.full_name)}</b><div class="actions" style="margin-top:6px"><button class="success" onclick="acceptFriend(${f.id})">Aceptar</button><button class="danger" onclick="removeFriend(${f.id})">Rechazar</button></div></div></div>`}).join('')||'<p style="color:var(--muted)">No tienes solicitudes pendientes.</p>';const fs=friendships.filter(f=>f.status==='ACCEPTED'&&(f.requester_id===profile.user_id||f.addressee_id===profile.user_id));$('friendsArea').innerHTML=fs.map(f=>{const uid=f.requester_id===profile.user_id?f.addressee_id:f.requester_id;const p=personById(uid);return `<div class="person"><div class="avatar">${avatarHtml(p)}</div><div class="person-main"><b>${esc(p.full_name)}</b><div class="person-meta">${esc(p.email)}</div></div><button class="btn danger" onclick="removeFriend(${f.id})">Eliminar</button></div>`}).join('')||'<p style="color:var(--muted)">Aún no tienes amigos.</p>'}
+$('publishPost').onclick=async()=>{const body=$('postBody').value.trim(),image_url=$('postImage').value.trim()||null;if(!body&&!image_url)return alert('Escribe algo o agrega una imagen.');const{error}=await sb.from('usb_posts').insert({user_id:profile.user_id,body,image_url});if(error)return alert(error.message);$('postBody').value='';$('postImage').value='';await refreshAll();switchTab('feed')};
+function renderFeed(){if(!$('feedArea'))return;$('feedArea').innerHTML=posts.map(p=>{const u=personById(p.user_id),rs=reactions.filter(r=>r.post_id===p.id),cs=comments.filter(x=>x.post_id===p.id),mine=rs.find(r=>r.user_id===profile.user_id);return `<div class="card post"><div class="post-head"><div class="avatar">${avatarHtml(u)}</div><div><b>${esc(u.full_name)}</b><div class="post-meta">${new Date(p.created_at).toLocaleString('es-BO')}</div></div></div><div class="post-body">${esc(p.body)}</div>${p.image_url?'<img class="post-img" src="'+esc(p.image_url)+'" alt="">':''}<div class="reaction-row"><button onclick="toggleLike(${p.id})">${mine?'👍 Te gusta':'👍 Me gusta'} · ${rs.length}</button><span style="font-size:12px;color:var(--muted)">💬 ${cs.length} comentarios</span>${p.user_id===profile.user_id||profile.role==='ADMIN'?'<button onclick="deletePost('+p.id+')">🗑 Eliminar</button>':''}</div><div>${cs.map(cm=>{const cu=personById(cm.user_id);return '<div class="comment"><b>'+esc(cu.full_name)+':</b> '+esc(cm.body)+'</div>'}).join('')}</div><div style="display:flex;gap:8px;margin-top:8px"><input id="comment_${p.id}" placeholder="Escribe un comentario..."><button class="btn secondary" onclick="addComment(${p.id})">Comentar</button></div></div>`}).join('')||'<div class="card section"><p style="color:var(--muted)">Todavía no hay publicaciones. Sé el primero en compartir algo.</p></div>';renderPeople()}
+window.toggleLike=async postId=>{const mine=reactions.find(r=>r.post_id===postId&&r.user_id===profile.user_id);if(mine)await sb.from('usb_post_reactions').delete().eq('id',mine.id);else{await sb.from('usb_post_reactions').insert({post_id:postId,user_id:profile.user_id,reaction:'LIKE'});const post=posts.find(p=>p.id===postId);if(post&&post.user_id!==profile.user_id)await sb.from('usb_notifications').insert({recipient_id:post.user_id,actor_id:profile.user_id,type:'REACTION',entity_id:postId,message:profile.full_name+' reaccionó a tu publicación'})}await refreshAll();switchTab('feed')};
+window.addComment=async postId=>{const el=$('comment_'+postId),body=el.value.trim();if(!body)return;const{error}=await sb.from('usb_post_comments').insert({post_id:postId,user_id:profile.user_id,body});if(error)return alert(error.message);const post=posts.find(p=>p.id===postId);if(post&&post.user_id!==profile.user_id)await sb.from('usb_notifications').insert({recipient_id:post.user_id,actor_id:profile.user_id,type:'COMMENT',entity_id:postId,message:profile.full_name+' comentó tu publicación'});await refreshAll();switchTab('feed')};
+window.deletePost=async id=>{if(!confirm('¿Eliminar esta publicación?'))return;await sb.from('usb_posts').delete().eq('id',id);await refreshAll();switchTab('feed')};
+function renderSocialProfile(){if(!$('profileName'))return;$('profileName').textContent=profile.full_name;$('profileMeta').textContent=(profile.career||'Ingeniería de Sistemas')+(profile.semester?' · '+profile.semester+'° semestre':'');$('profileBio').value=profile.bio||'';$('profileCareer').value=profile.career||'Ingeniería de Sistemas';$('profileSemester').value=profile.semester||'';$('profileAvatarUrl').value=profile.avatar_url||'';$('profileCoverUrl').value=profile.cover_url||'';$('profileAvatar').innerHTML=avatarHtml(profile);$('profileCover').style.backgroundImage=profile.cover_url?'url("'+profile.cover_url.replace(/"/g,'')+'")':''}
+$('saveSocialProfile').onclick=async()=>{const payload={bio:$('profileBio').value.trim(),career:$('profileCareer').value.trim()||'Ingeniería de Sistemas',semester:$('profileSemester').value?Number($('profileSemester').value):null,avatar_url:$('profileAvatarUrl').value.trim()||null,cover_url:$('profileCoverUrl').value.trim()||null,updated_at:new Date().toISOString()};const{error}=await sb.from('usb_profiles').update(payload).eq('user_id',profile.user_id);if(error)return alert(error.message);Object.assign(profile,payload);alert('Perfil actualizado.');renderSocialProfile();renderPeople();renderFeed()};
+function renderNotifications(){$('notificationsArea').innerHTML=notifications.map(n=>`<div class="notif"><b>${esc(n.message)}</b><div class="post-meta">${new Date(n.created_at).toLocaleString('es-BO')} ${n.read_at?'· Leída':'· Nueva'}</div></div>`).join('')||'<p style="color:var(--muted)">No tienes notificaciones.</p>'}
+$('markNotifications').onclick=async()=>{await sb.from('usb_notifications').update({read_at:new Date().toISOString()}).eq('recipient_id',profile.user_id).is('read_at',null);await refreshAll();switchTab('notificaciones')};
+
 $('passwordForm').onsubmit=async e=>{e.preventDefault();const a=$('newPassword').value,b=$('newPassword2').value;if(a!==b)return msg('passwordMsg','Las contraseñas no coinciden.');const{error}=await sb.auth.updateUser({password:a});if(error)return msg('passwordMsg',error.message);$('newPassword').value='';$('newPassword2').value='';msg('passwordMsg','Contraseña actualizada correctamente.')};
 (async()=>{const{data}=await sb.auth.getSession();if(data.session){session=data.session;await loadProfile()}})();
 </script>
