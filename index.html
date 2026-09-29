@@ -88,6 +88,14 @@ html{scroll-behavior:smooth} body{min-height:100vh;background:linear-gradient(18
  .topbar .inner{padding:7px 10px}.top-actions .desktop-action{display:none}.top-search input{height:40px;font-size:13px}.logo{width:40px;height:40px}.container{padding-left:8px;padding-right:8px}.section{padding:15px}.card{border-radius:15px}.home-hero{padding:20px;border-radius:17px}.hero-content{display:block}.hero-title{font-size:22px}.hero-actions{margin-top:14px}.stats{gap:8px}.stat{padding:13px}.stat b{font-size:24px}.quick-grid{grid-template-columns:1fr}.social-layout{display:block}.composer{padding:13px}.post{border-radius:14px}.post-head{padding:13px 13px 7px}.post-body{margin:5px 13px 12px}.post-actions{padding:4px 6px}.post-actions button{font-size:12px;padding:9px 4px}.comments-wrap{padding:0 12px 12px}.people-grid{grid-template-columns:1fr}.person{min-height:0}.profile-cover{height:170px}.profile-header{padding:0 14px 14px;margin-top:-43px;align-items:flex-end}.profile-header .avatar{width:88px;height:88px}.profile-info h2{font-size:20px}.filters{display:grid;grid-template-columns:1fr!important;gap:8px}.grid2,.grid3{grid-template-columns:1fr}.offerings{grid-template-columns:1fr}.week-grid{grid-template-columns:repeat(5,82vw);scroll-snap-type:x mandatory}.day-col{min-width:82vw;scroll-snap-align:start}.toolbar{align-items:stretch}.toolbar>input,.toolbar>select{max-width:none!important}.toolbar .btn{width:100%}.table-wrap{border-radius:12px}.mobile-only{display:block}
 }
 
+
+.mobile-drawer-backdrop{display:none}.mobile-drawer{display:none}
+@media(max-width:980px){
+ .mobile-drawer-backdrop{display:block;position:fixed;inset:0;background:rgba(15,23,42,.48);z-index:89}
+ .mobile-drawer{display:block;position:fixed;z-index:90;right:0;top:0;bottom:0;width:min(88vw,360px);background:#fff;padding:16px;transform:translateX(102%);transition:.24s ease;overflow:auto;box-shadow:-20px 0 50px rgba(15,23,42,.2)}
+ .mobile-drawer.open{transform:translateX(0)}.mobile-drawer-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;font-size:20px}.mobile-drawer-profile{display:flex;align-items:center;gap:10px;padding:12px;border-radius:14px;background:#f5f8fc;margin-bottom:12px}
+}
+
 </style>
 </head>
 <body>
@@ -161,7 +169,7 @@ html{scroll-behavior:smooth} body{min-height:100vh;background:linear-gradient(18
 <section id="tab-feed" class="tab hidden">
 <div class="social-layout">
 <div>
-<div class="feed-shell"><div class="card composer"><div style="display:flex;gap:10px;align-items:center;margin-bottom:10px"><div id="composerAvatar" class="avatar"></div><div style="font-weight:800">Crear publicación</div></div><textarea id="postBody" placeholder="¿Qué estás pensando?"></textarea><div id="postPreviewWrap" class="hidden" style="margin-top:10px"><img id="postPreview" class="post-img" alt="Vista previa"></div><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:10px"><label class="btn secondary" style="display:inline-flex;align-items:center;gap:6px;margin:0">📷 Foto<input id="postImageFile" type="file" accept="image/*" style="display:none"></label><button class="btn primary" id="publishPost">Publicar</button></div></div>
+<div class="feed-shell"><div class="card composer"><div style="display:flex;gap:10px;align-items:center;margin-bottom:10px"><div id="composerAvatar" class="avatar"></div><div style="font-weight:800">Crear publicación</div></div><textarea id="postBody" placeholder="¿Qué estás pensando?"></textarea><div id="postPreviewWrap" class="hidden" style="margin-top:10px"><img id="postPreview" class="post-img" alt="Vista previa"></div><div class="composer-tools"><label class="file-pill">📷 Foto o imagen<input id="postImageFile" type="file" accept="image/*" style="display:none"></label><button class="btn primary" id="publishPost">Publicar</button></div></div>
 <div id="feedArea"></div></div>
 </div>
 <div class="right-rail"><div class="card section"><h3 style="margin-top:0">Personas sugeridas</h3><div id="suggestedPeople"></div></div><div class="card section" style="margin-top:14px"><h3 style="margin-top:0">Accesos rápidos</h3><button class="navbtn" onclick="switchTab('amigos')">🤝 Mis amigos</button><button class="navbtn" onclick="switchTab('materias')">📚 Mis materias</button><button class="navbtn" onclick="switchTab('horario')">🗓️ Mi horario</button></div></div>
@@ -172,7 +180,23 @@ html{scroll-behavior:smooth} body{min-height:100vh;background:linear-gradient(18
 
 <section id="tab-amigos" class="tab hidden"><div class="card section"><h2>Amigos y solicitudes</h2><div class="grid2"><div><h3>Solicitudes recibidas</h3><div id="requestsArea"></div></div><div><h3>Mis amigos</h3><div id="friendsArea"></div></div></div></div></section>
 
-<section id="tab-perfil-social" class="tab hidden"><div class="card profile-shell"><div id="profileCover" class="profile-cover"></div><div class="profile-header"><div id="profileAvatar" class="avatar"></div><div class="profile-info"><h2 id="profileName" style="margin:0"></h2><div id="profileMeta" class="post-meta"></div></div></div><div class="profile-editor"><div class="full"><label>Biografía</label><textarea id="profileBio" placeholder="Cuéntale algo a tus compañeros..."></textarea></div><div><label>Carrera</label><input id="profileCareer"></div><div><label>Semestre</label><select id="profileSemester"><label>Carrera</label><input id="profileCareer"><label>Semestre</label><select id="profileSemester"><option value="">Sin definir</option><option value="1">1° semestre</option><option value="2">2° semestre</option><option value="3">3° semestre</option><option value="4">4° semestre</option><option value="5">5° semestre</option><option value="6">6° semestre</option><option value="7">7° semestre</option><option value="8">8° semestre</option><option value="9">9° semestre</option><option value="10">10° semestre</option></select></div><div class="upload-tile"><label style="margin-top:0">Foto de perfil</label><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><label class="btn secondary" style="display:inline-flex;margin:0">📷 Subir foto<input id="profileAvatarFile" type="file" accept="image/*" style="display:none"></label><span id="avatarUploadStatus" class="post-meta"></span></div><input id="profileAvatarUrl" type="hidden"></div><div class="upload-tile"><label style="margin-top:0">Portada</label><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><label class="btn secondary" style="display:inline-flex;margin:0">🖼️ Subir portada<input id="profileCoverFile" type="file" accept="image/*" style="display:none"></label><span id="coverUploadStatus" class="post-meta"></span></div><input id="profileCoverUrl" type="hidden"></div><div class="full"><button class="btn primary" id="saveSocialProfile">Guardar cambios del perfil</button></div></div></div></section>
+<section id="tab-perfil-social" class="tab hidden">
+<div class="card profile-shell">
+  <div id="profileCover" class="profile-cover"></div>
+  <div class="profile-header">
+    <div id="profileAvatar" class="avatar"></div>
+    <div class="profile-info"><h2 id="profileName" style="margin:0"></h2><div id="profileMeta" class="post-meta"></div></div>
+  </div>
+  <div class="profile-editor">
+    <div class="full"><label>Biografía</label><textarea id="profileBio" placeholder="Cuéntale algo a tus compañeros..."></textarea></div>
+    <div><label>Carrera</label><input id="profileCareer"></div>
+    <div><label>Semestre</label><select id="profileSemester"><option value="">Sin definir</option><option value="1">1° semestre</option><option value="2">2° semestre</option><option value="3">3° semestre</option><option value="4">4° semestre</option><option value="5">5° semestre</option><option value="6">6° semestre</option><option value="7">7° semestre</option><option value="8">8° semestre</option><option value="9">9° semestre</option><option value="10">10° semestre</option></select></div>
+    <div class="upload-tile"><label style="margin-top:0">Foto de perfil</label><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><label class="btn secondary" style="display:inline-flex;margin:0">📷 Elegir foto<input id="profileAvatarFile" type="file" accept="image/*" style="display:none"></label><span id="avatarUploadStatus" class="post-meta"></span></div><input id="profileAvatarUrl" type="hidden"></div>
+    <div class="upload-tile"><label style="margin-top:0">Portada</label><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><label class="btn secondary" style="display:inline-flex;margin:0">🖼️ Elegir portada<input id="profileCoverFile" type="file" accept="image/*" style="display:none"></label><span id="coverUploadStatus" class="post-meta"></span></div><input id="profileCoverUrl" type="hidden"></div>
+    <div class="full"><button class="btn primary" id="saveSocialProfile">Guardar cambios del perfil</button></div>
+  </div>
+</div>
+</section>
 
 <section id="tab-notificaciones" class="tab hidden"><div class="card section"><div class="toolbar"><h2>Notificaciones</h2><button class="btn secondary" id="markNotifications">Marcar como leídas</button></div><div id="notificationsArea"></div></div></section>
 
@@ -205,8 +229,26 @@ html{scroll-behavior:smooth} body{min-height:100vh;background:linear-gradient(18
 <button data-tab="feed"><span>📰</span>Feed</button>
 <button data-tab="personas"><span>👥</span>Personas</button>
 <button data-tab="notificaciones"><span>🔔</span>Avisos</button>
-<button data-tab="perfil-social"><span>🙋</span>Perfil</button>
+<button id="mobileMoreBtn" type="button"><span>☰</span>Más</button>
 </nav>
+<div id="mobileDrawerBackdrop" class="mobile-drawer-backdrop hidden"></div>
+<aside id="mobileDrawer" class="mobile-drawer">
+<div class="mobile-drawer-head"><b>Menú</b><button id="mobileDrawerClose" class="icon-btn" type="button">✕</button></div>
+<div class="mobile-drawer-profile"><div id="drawerAvatar" class="side-avatar">U</div><div><b id="drawerName">Usuario</b><div class="post-meta">USB Social Académico</div></div></div>
+<button class="navbtn" data-tab="perfil-social">🙋 Mi perfil</button>
+<button class="navbtn" data-tab="amigos">🤝 Amigos y solicitudes</button>
+<div class="sidebar-title">Académico</div>
+<button class="navbtn" data-tab="planificador">🧭 Planificador</button>
+<button class="navbtn" data-tab="materias">📚 Mis materias</button>
+<button class="navbtn" data-tab="horario">🗓️ Mi horario</button>
+<button class="navbtn" data-tab="malla">🧩 Malla curricular</button>
+<button class="navbtn" data-tab="perfil">🔐 Mi cuenta</button>
+<div class="sidebar-title admin-only">Administración</div>
+<button class="navbtn admin-only" data-tab="usuarios">👥 Usuarios</button>
+<button class="navbtn admin-only" data-tab="oferta">👨‍🏫 Oferta académica</button>
+<button class="navbtn admin-only" data-tab="auditoria">🧾 Auditoría</button>
+<button class="navbtn" id="mobileLogout">↩ Cerrar sesión</button>
+</aside>
 </section>
 </main>
 
@@ -226,11 +268,17 @@ sb.auth.onAuthStateChange((event)=>{if(event==='PASSWORD_RECOVERY'){$('loginView
 
 async function loadProfile(){const u=(await sb.auth.getUser()).data.user;if(!u)return;const{data,error}=await sb.from('usb_profiles').select('*').eq('user_id',u.id).single();if(error||!data){await sb.auth.signOut();return msg('loginMsg','Tu correo no está autorizado.')}profile=data;$('loginView').classList.add('hidden');$('appView').classList.remove('hidden');$('who').textContent=profile.full_name;$('whoEmail').textContent=profile.email;$('whoRole').textContent=profile.role;$('whoRole').className='badge '+(profile.role==='ADMIN'?'admin':'');document.querySelectorAll('.admin-only').forEach(x=>x.classList.toggle('hidden',profile.role!=='ADMIN'));$('welcome').textContent=profile.role==='ADMIN'?'Tu espacio de comunidad, gestión académica y administración está listo.':'Conecta con tus compañeros y administra tus materias desde un solo lugar.';$('homeGreeting').textContent='Hola, '+(profile.full_name||'').split(' ')[0]+' 👋';updateIdentityUI();await refreshAll();switchTab('inicio')}
 $('logout').onclick=async()=>{await sb.auth.signOut();location.reload()};
-document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>switchTab(b.dataset.tab));
+document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{switchTab(b.dataset.tab);closeMobileDrawer()});
+function openMobileDrawer(){$('mobileDrawer')?.classList.add('open');$('mobileDrawerBackdrop')?.classList.remove('hidden')}
+function closeMobileDrawer(){$('mobileDrawer')?.classList.remove('open');$('mobileDrawerBackdrop')?.classList.add('hidden')}
+if($('mobileMoreBtn'))$('mobileMoreBtn').onclick=openMobileDrawer;
+if($('mobileDrawerClose'))$('mobileDrawerClose').onclick=closeMobileDrawer;
+if($('mobileDrawerBackdrop'))$('mobileDrawerBackdrop').onclick=closeMobileDrawer;
+if($('mobileLogout'))$('mobileLogout').onclick=async()=>{await sb.auth.signOut();location.reload()};
 function switchTab(t){if(['usuarios','oferta','auditoria'].includes(t)&&profile?.role!=='ADMIN')return;document.querySelectorAll('.tab').forEach(x=>x.classList.add('hidden'));$('tab-'+t).classList.remove('hidden');document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x.dataset.tab===t));window.scrollTo({top:0,behavior:'smooth'});if(t==='planificador')renderPlanner();if(t==='malla')renderMalla();if(t==='horario')renderSchedule();if(t==='oferta')renderAdminOffers();if(t==='feed')renderFeed();if(t==='personas')renderPeople();if(t==='amigos')renderFriends();if(t==='perfil-social')renderSocialProfile();if(t==='notificaciones')renderNotifications()}
 $('goPlanner').onclick=()=>switchTab('planificador');
 
-function updateIdentityUI(){if(!profile)return;const html=profile.avatar_url?'<img src="'+esc(profile.avatar_url)+'" alt="">':esc((profile.full_name||'U').split(' ').map(x=>x[0]).slice(0,2).join('').toUpperCase());if($('topAvatar'))$('topAvatar').innerHTML=html;if($('sideAvatar'))$('sideAvatar').innerHTML=html}
+function updateIdentityUI(){if(!profile)return;const html=profile.avatar_url?'<img src="'+esc(profile.avatar_url)+'" alt="">':esc((profile.full_name||'U').split(' ').map(x=>x[0]).slice(0,2).join('').toUpperCase());if($('topAvatar'))$('topAvatar').innerHTML=html;if($('sideAvatar'))$('sideAvatar').innerHTML=html;if($('drawerAvatar'))$('drawerAvatar').innerHTML=html;if($('drawerName'))$('drawerName').textContent=profile.full_name||'Usuario'}
 function updateSocialCounters(){
  const friends=friendships.filter(f=>f.status==='ACCEPTED'&&(f.requester_id===profile.user_id||f.addressee_id===profile.user_id)).length;
  const requests=friendships.filter(f=>f.status==='PENDING'&&f.addressee_id===profile.user_id).length;
