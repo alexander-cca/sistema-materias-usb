@@ -652,7 +652,6 @@ function renderFriends(){
  $('friendsArea').innerHTML=fs.map(f=>{const uid=f.requester_id===profile.user_id?f.addressee_id:f.requester_id;const p=personById(uid);return `<div class="friend-card"><div class="avatar clickable-name" onclick="openUserProfile('${uid}')">${avatarHtml(p)}</div><div class="friend-card-main"><div class="friend-card-name clickable-name" onclick="openUserProfile('${uid}')">${esc(p.full_name)}</div><div class="friend-card-meta">${esc(p.career||'Ingeniería de Sistemas')} · ${sharedSubjects(uid)} materias en común</div></div><div class="friend-card-actions"><button class="btn secondary" onclick="openUserProfile('${uid}')">Perfil</button><button class="btn danger" onclick="removeFriend(${f.id})">Eliminar</button></div></div>`}).join('')||'<div style="text-align:center;padding:35px;color:var(--muted)"><div style="font-size:40px">🤝</div><h3>Aún no tienes amigos</h3><p>Busca compañeros y envía tu primera solicitud.</p><button class="btn primary" onclick="switchTab(\'personas\')">Buscar personas</button></div>'
 }
 let pendingPostFile=null;
-let pendingPostFile=null;
 async function uploadSocialImage(file,kind){
  if(!file)return null;
  if(file.size>5*1024*1024)throw new Error('La imagen supera el límite de 5 MB.');
